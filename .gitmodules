@@ -1,0 +1,15 @@
+[submodule "source/services/api"]
+	path = source/services/api
+	url = git@gitlab.com:m11259/api.git
+[submodule "source/services/frontend"]
+	path = source/services/frontend
+	url = git@gitlab.com:m11259/frontend.git
+[submodule "source/services/telegram-bot"]
+	path = source/services/telegram-bot
+	url = git@gitlab.com:m11259/telegram-bot.git
+[submodule "source/services/worker"]
+	path = source/services/worker
+	url = git@gitlab.com:m11259/worker.git
+[submodule "source/services/oms"]
+	path = source/services/oms
+	url = git@gitlab.com:m11259/object-model-service.git
