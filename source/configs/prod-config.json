@@ -1,0 +1,5 @@
+{
+    "name": "MSG Guard Service",
+    "container_prefix": "main",
+    "domain": "bot-ohrana.com"
+}

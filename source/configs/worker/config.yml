@@ -1,0 +1,100 @@
+# Through the whole project words 'address' and 'flat' have the same meaning.
+# That's because firstly it was written for one house with one address and many flat
+# and now it is adapted for whole living squares of the city.
+
+# Info for requests sheet
+requests:
+    # sheet-id is the id in sheet url
+    sheet-id: 
+
+# Info for base sheet
+base:
+    sheet-id: 1qDUwj7mb8X3mp3WaU15MjC3xR2urzTYUEE6eas3JRDA
+    # sheet-id: 11iaiD0CVPm2GBUeD_nspMC02n72QqP797EBDx0BpGH0 
+    # read-range is the range to read. typically worker is
+    # written for a whole one page. there's no multipage support
+    read-range: 
+    - "'БАЗА'"
+    # The retrieved data from google sheet api will be considered
+    # valid for such number of minutes
+    sheet-data-limit: 5
+
+
+    # flat-regex specifies how to read values in flat name column
+    # a value of the first group is picked and there must be only one group
+    address-regexp: "К-(.+)"
+    # Should worker transform address to lowercase
+    address-lowercase: no
+    # row number (starting from 0) from which flat data rows start
+    # e.g. 3 means fourth row
+    address-row-start: 3
+    # column of flat name (address) with same numeration rule
+    address-name-col: 1
+    # list of columns to pick phone numbers
+    phone-number-cols:
+        - 3
+    # list of columns to pick vin (vehicle identification number)
+    vin-cols:
+        - 4
+
+# Info for payments sheet
+payments:
+    sheet-id: 1s0TH8QE3F8nduBm0yjL2rmBGYzWE5vv7GBnC0vhdDG8
+    read-range: "'КВАРТИРЫ'"
+    # The retrieved data from google sheet api will be considered
+    # valid for such number of minutes
+    sheet-data-limit: 5
+
+    address-regexp: "К-(.+)"
+    address-lowercase: no
+    address-row-start: 8
+    address-name-col: 2
+    # Column from which the year labels begin
+    year-start-col: 26
+    year-row: 0
+    # From which month start the payments monitoring
+    year-start: 2020
+    month-start: 7
+    # This delta is added to specific year start index (not 
+    # year-start-col, but the first occurence of specific
+    # year in row) to correct column
+    year-month-index-delta: -1
+    # If payment for some month is > than payment-threshold
+    # then suppose that this month is paid
+    payment-threshold: 70
+
+# How often the redis data would be updated
+timers:
+    # sum payments to the address during the last 3 months
+    # spec seconds (integer)
+    # 0 disables the timer
+    last-months-payments: 360
+    # store unpaid months
+    # spec seconds (integer)
+    # 0 disables the timer
+    unpaid: 360
+    # vin from base sheet
+    # spec seconds (integer)
+    # 0 disables the timer
+    vin: 360
+    # phone numbers from base sheet
+    # spec seconds (integer)
+    # 0 disables the timer
+    phone: 360
+    # write new requests to sheet from redis
+    # spec seconds (integer)
+    # 0 disables the timer
+    new-requests: 0
+    # write new requests to sheet from redis
+    # spec seconds (integer)
+    # 0 disables the timer
+    flats: 360
+    # spec hours (unsigned int type). the time would be truncated down to
+    # to spec hours, then the hours would be added back.
+    # f.i.: 24 hours sets deny ar midnight
+    #       12 hours sets deny at 12pm, 12am
+    #       3 hours sets deny at 12am, 3am, 6am, ..., 9pm
+    # 0 disables the timer
+    deny-requests: 24 
+
+

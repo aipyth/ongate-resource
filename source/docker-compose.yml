@@ -1,0 +1,124 @@
+version: "3.3"
+
+services: 
+  redis:
+    build: 
+      context: .
+      dockerfile: build/redis.Dockerfile
+    ports:
+      - 6379:6379
+
+  postgres:
+    image: postgres:14
+    env_file:
+      - .env
+    ports: 
+      - 5432:5432
+  
+  oms:
+    build:
+      context: ./services/oms/
+      dockerfile: build/package/Dockerfile
+    depends_on: 
+      - postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_SSLMODE: disable
+      PORT: 9876
+      MIGRATE_VERSION: 5
+      ENVIRONMENT: development
+    ports: 
+      - 9876:9876
+
+  # worker:
+  #   build:
+  #     context: ./services/worker
+  #     dockerfile: Dockerfile
+  #   restart: no
+  #   volumes:
+  #     - ./keys/worker/credentials.json:/credentials.json
+  #     - ./configs/worker/config.yml:/config.yml
+  #     # - <executable>:<executable>
+  #   depends_on:
+  #     - redis
+  #     - database
+  #   env_file:
+  #     - .env
+
+  # telegram-bot:
+  #   build:
+  #     context: ./services/telegram-bot
+  #     dockerfile: Dockerfile
+  #   restart: unless-stopped
+  #   env_file: 
+  #     - .env
+  #   volumes: 
+  #     # - ./<executable>:/main
+  #     - ./configs/telegram-bot/config.json:/config.json
+  #     - ./configs/telegram-bot/sigma-config.yml:/sigma-config.yml
+  #   depends_on:
+  #     - database
+  #     - redis
+
+  api:
+    build:
+      context: ./services/api/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - WEB_PORT=3000
+      - GRPC_URL=oms:9876
+    volumes:
+      - ./services/api/src:/app/src
+      - tables:/app/tables
+    depends_on:
+      - oms
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 9229:9229
+    command: bash -c "node index.js"
+
+  # TODO configure frontend & nginx
+
+  # frontend:
+  #   build: 
+  #     context: ./services/frontend/
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - NUXT_PORT=3002
+  #     - NUXT_HOST=localhost
+  #   volumes: 
+  #     - ./services/frontend:/app
+  #   depends_on:
+  #     - oms
+  #     - api
+  #   ports:
+  #     - 3002:3000
+
+  # nginx:
+  #   build:
+  #     context: src
+  #     dockerfile: nginx.Dockerfile
+  #   environment:
+  #     VIRTUAL_HOST: localhost
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   depends_on:
+  #     - cite
+  #   volumes:
+  #     - ./src/nginx.dev.conf:/etc/nginx/nginx.conf
+  #     - tables:/app/tables
+  #     - ./src/cite/static:/app/static
+
+volumes: 
+  tables:

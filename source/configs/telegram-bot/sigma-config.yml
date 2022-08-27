@@ -1,0 +1,549 @@
+uk:
+  start:
+    first-time: 
+      message: |
+        Вітаємо!
+        Тут ви можете надіслати заявку диспетчеру вашого будинку для попередження про доставку або гостей.
+        Але для початку вам потрібно надати інформацію для ідентифікації вас.
+      keyboard:
+        - - name: "Почати збір даних для ідентифікації"
+            data: "identification-start" 
+    nonidentified: 
+      message: |
+        Вітаємо {name}!
+        Тут ви можете надіслати заявку диспетчеру вашого будинку для попередження про доставку або гостей.
+        Ми отримали ваші дані та розглянемо ваш запит скоро.
+      keyboard:
+        - - name: "Надіслати дані для ідентифікації ще раз"
+            data: "identification-start"
+    identified: 
+      message: |
+        Вітаємо, {name}!
+        Тут ви можете надсилати запити диспетчеру вашого будинку для попередження про доставку або гостей.
+      keyboard: 
+        - - name: Надіслати запит
+            data: "request-start"
+  
+  identification:
+    start: Введіть, будь ласка, ваше ім'я та прізвище
+    get_number:
+      message: Введіть, будь ласка, ваш мобільний номер телефону в форматі +380*********, або натисніть кнопку відправки вашого контакту.
+      keyboard:
+        - - name: 📲 Надіслати ваш контакт
+            contact: yes 
+    get_address: "Будь ласка, напишіть точний номер вашої адреси у форматі: Дім/корпус-квартира\nНаприклад: 15/2-35"
+    contact_not_valid: Ви неправильно ввели номер. Спробуйте, будь ласка, ще раз.
+    address_not_exists: Ми не знайшли вашу квартиру в нашій базі. Тому не зможемо слідкувати за станом ваших платежів автоматично та оновлювати ваш статус відповідно, що включає вашу можливіть відправляти запити. Запит на ідентифікацію перейде до диспетчеру все рівно та він зможе вас активувати. Активація дає можливість надсилати запити охороні. Але в цілях безпеки статус всех користувачів на початку місяця оновлюється автоматично і, можливо, вам доведеться знову звернутися до диспетчера.
+    address_success: Ви успішно надіслали дані для ідентифікації.\nВаші дані будуть перевірені для вашої активації. Вас буде автоматично активовано, якщо впродовж останніх місяців ви сплачували послуги охорони.
+    address_not_activated: Поки що ви не зможете надсилати запити охороні, оскільки ви не платили за послуги впродовж останніх місяців.
+    error: Сталася помилка при надсиланні даних. Повідомте вашій охороні про це, зазначивши час.
+  
+  request:
+    intro: 
+      unidentified: Вас ще не ідентифіковано. Для додаткової інформації зверніться до диспетчера або надішліть дані знову, надіславши команду /identify
+      unactivated: Вас не було активовано. Можливо, ви забули проплатити послуги охорони за останні місяці.
+      get_request: Напишіть, будь ласка, ціль вашої заявки.
+    confirm:
+      message: "Ви справді бажаєте надіслати запит 
+        <i>{body}</i>
+        На ваше ім'я {name} та адрес {address}?"
+      keyboard: 
+        - - name: "Так"
+            data: "yes"
+          - name: "Ні"
+            data: "no"
+    carnumber:
+      get: "Додати номер авто до заявки"
+      cancel:  
+        keyboard:
+          - - name: "Без номеру"
+              data: "carnumber-cancel"
+      invalid: "Ви ввели невірний номер. \nБудь ласка, спорбуйте знову"
+      confirm:
+        message: "Ви справді бажаєте надіслати запит: \n<i>{body}</i>\nНа ваше ім'я {name}, адресу {address} з номером авто {carnumber}?"
+        keyboard:
+          - - name: "Так"
+              data: "yes"
+            - name: "Ні"
+              data: "no"
+      nonumber: "Ви справді бажаєте надіслати запит:: \n<i>{body}</i>\nНа ваше ім'я {name}, адресу {address} ви не додали номер авто?"
+
+    accepted: <b>Ваш запит по адресі {address} був успішно надісланий.</b>
+    denied: Ви відхилили ваш запит
+
+  notify:
+    user_approved: 
+      message: <b>Ваш запит на ідентифікацію буде схвалено.</b>
+      keyboard: 
+        - - name: Надіслати запит
+            data: request-start
+
+    user_denied: <b>На жаль, вам відмовлено в ідентифікації.\nВи не зможете надсилати запити охороні.</b> Якщо виникли питання, вам варто звернутися до охорони вашого ЖК.
+
+    user_activated: 
+      message: <b>Ви були активовані для надсилання запитів вашій охороні.</b>
+      keyboard: 
+        - - name: Надіслати запит
+            data: request-start
+
+    user_deactivated: <b>Ви були деактивовані та не зможете надсилати запити.</b>\nДля запитань, зверніться до охорони вашого ЖК.
+
+    req_accepted: 
+      message: "Ми успішно <b>виконали</b> ваш запит №{id}.\n<i>{datetime}</i>\n{body}"
+      keyboard: 
+        - - name: Переглянути поточні запити
+            data: view-requests
+        - - name: Надіслати запит
+            data: request-start
+
+    req_updated:
+      message: "Автомобіль за вашим запитом №{id}.\n<i>{datetime}</i>\n{body}\n <b>в'їхав на територію ЖК</b>."
+
+    req_denied:
+      message: На жаль, ваш запит №{id}.\n<i>{datetime}</i>\n{body}\n\n<b>був відхилений</b>
+      keyboard:
+        - - name: Переглянути поточні запити
+            data: view-requests
+        - - name: Надіслати запит
+            data: request-start
+  
+    error: Сталася помилка. Повідомте вашій охороні про це, зазначивши час.
+
+    req_unaccepted:
+      message: "Ваша виконана заявка №{id}.\n<i>{datetime}</i>\n{body}\n\n<b>була щойно позначена як ще не виконана, можливо вона буде виконана через деякий час.</b>"
+      keyboard: 
+        - - name: Переглянути поточні запити
+            data: view-requests
+        - - name: Надіслати запит
+            data: request-start
+
+    req_undenied:
+      message: Ваш запит, який було відхилено №{id}.\n<i>{datetime}</i>\n{body}\n\n<b> щойно було позначено як ще не виконаний, все ще може бути виконано через для деякий час.</b>
+      keyboard: 
+        - - name: Переглянути поточні запити
+            data: view-requests
+        - - name: Надіслати запит
+            data: request-start
+  
+  profile:
+    no_user: Наразі, у нас немає вашого профілю. Надішліть нам свої дані для ідентифікації /identify
+    identified:
+      activated: "Ви авторизовані як:\nІм'я: <b>{firstname}</b>\nПрізвище: <b>{lastname}</b>\nUsername: <b>{username}</b>\nНомер телефону: <b>{phone}</b>Адреса: <b>{address}</b>\nВи ідентифіковані.\nВи оплатили охорону за останні місяці.\nВи можете надсилати запити."
+      unactivated: "Ви авторизовані як:\nІм'я: <b>{firstname}</b>\nПрізвище: <b>{lastname}</b>\nUsername: <b>{username}</b>\nНомер телефону: <b>{phone}</b>Адреса: <b>{address}</b>\n \nВи ідентифіковані.\nВи не можете надсилати запити, оскільки не оплатили послуги охорони за останні місяці."
+    unidentified: "Ви авторизовані як:\nІм'я: <b>{firstname}</b>\nПрізвище: <b>{lastname}</b>\nUsername: <b>{username}</b>\nНомер телефону: <b>{phone}</b>Адреса: <b>{address}</b> \nВаш запит на ідентифікацію все ще не схвалено."
+    lang:
+      keyboard:
+        - - name: "Змінити мову"
+            data: "switch-lang"            
+    
+  user_manager:
+    requests_manager:
+      list: "Список запитів, які все ще у процесі виконання:\n{requests}"
+      no_reqs: "Наразі у вас немає активних запитів."
+      buttons:
+        next: 
+          name: "Наступна сторінка"
+          data:  "reqmanage-next-page"
+        prev:
+          name: "Попередня сторінка"
+          data: "reqmanage-prev-page"
+        cancel_req:
+          name: "Відмінити запит №%s"
+          data: "cancel-request-%s"
+
+    payments_checker:
+      unpaid: |
+        <b>Ви не сплатили послуги охорони за такі місяці:</b>
+        {months}
+        Отримати реквізити або оплатити в телеграмі можна за командою /pay
+      ok: Все сплачено. 
+
+    payment:
+      requisites: "<b>Реквізити для оплати</b>
+  ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
+  код ЄДРПОУ <code>43152352</code>
+  п/р <code>UA863052990000026005016804997</code>
+  ПАТ КБ «Приватбанк»"
+      start:
+        message: Оплатити онлайн через Telegram
+        keyboard:
+          - - name: Оплатити
+              data: pay
+
+    language:
+      choose:
+        message: "Оберіть бажану мову:"
+        keyboard: 
+          - - name: "Русский"
+              data: "switch-to-russian"
+            - name: "Українська"
+              data: "switch-to-ukrainian"
+            - name: "English"
+              data: "switch-to-english"
+      changed: "Ви змінили мову на українську"
+
+
+
+      #################################
+      # English config
+      #################################
+
+en:
+  start:
+    first-time:
+      message: "Hello! \nHere you can send a request to your guard service to warn about delivery or guests. \nBut first you need to provide information to identify you."
+      keyboard:
+        - - name: Start data collection for identification
+            data: "identification-start"
+    nonidentified:
+      message: |
+        Hello {name}!
+        Here you can send a request to your guard service to warn about delivery or guests.
+        Your data for identification has been sent and we will review your request shortly.
+      keyboard:
+        - - name: Send data for identification again
+            data: "identification-start"
+    identified:
+      message: |
+        Hello {name}!
+        Here you can send a request to your guard service for delivery or guest warnings.
+      keyboard:
+        - - name: Submit request
+            data: "request-start"
+  
+  identification:
+    start: Please enter your name and surname
+    get_number:
+      message: Please enter your mobile phone number in the format +380 *********, or click the button to send your contact.
+      keyboard:
+        - - name: 📲 Send your contact
+            contact: yes
+    get_address: "Please write the exact number of your address in the format: House/apartment-building \nExample: 15/2-35"
+    contact_not_valid: You entered the wrong number. Please try again.
+    address_not_exists: We did not find your apartment in our database. Therefore, we will not be able to monitor the status of your payments automatically and update your status accordingly, which includes your ability to submit requests. The request for identification will go to the manager anyway and he will be able to activate you. Activation allows you to send requests to security. But for security reasons, the status of all users is updated automatically at the beginning of the month, and you may need to contact your manager again.
+    address_success: You have successfully submitted your credentials.\nYour details will be verified for your activation. You will be automatically activated if you have paid for security services in recent months.
+    address_not_activated: You will not be able to send security requests at this time because you have not paid for services in recent months.
+    error: There was an error sending the data. Tell your security about this, indicating the time.
+  
+  request:
+    intro:
+      unidentified: You have not been identified yet. For more information, contact the manager or send the data again by sending the command /identify
+      unactivated: You have not been activated. You may have forgotten to pay for security services in recent months.
+      get_request: Please write the purpose of your application.
+    confirm:
+      message: "Are you sure you want to send the request: \n<i>{body}</i>\nsigning your name {name} and address {address}?"
+      keyboard:
+        - - name: "Yes"
+            data: "yes"
+          - name: "No"
+            data: "no"
+    carnumber:
+      get: "Add a car number to you request"
+      cancel:  
+        keyboard:
+          - - name: "Cancel"
+              data: "carnumber-cancel"
+      invalid: "You've put invalid carnumber. \nPlease, retry"
+      confirm:
+        message: "Are you sure you want to send the request: \n<i>{body}</i>\nsigning your name {name}, address {address} and car number {carnumber}?"
+        keyboard:
+          - - name: "Yes"
+              data: "yes"
+            - name: "No"
+              data: "no"
+      nonumber: "Are you sure you want to send the request: \n<i>{body}</i>\nsigning your name {name}, address {address} without carnumber?"
+
+
+
+    accepted: <b> Your request to {address} has been successfully sent. </b>
+    denied: You have declined your request
+
+  notify:
+    user_approved:
+      message: <b> Your identification request has been approved. </b>
+      keyboard:
+        - - name: Send request
+            data: request-start
+
+    user_denied: <b> Sorry, we denied your identification. \nYou will not be able to submit requests. </b>If you have any questions, please contact the security.
+
+    user_activated:
+      message: <b> You have been activated to send requests to your security. </b>
+      keyboard:
+        - - name: Send request
+            data: request-start
+
+    user_deactivated: <b> You have been deactivated and will not be able to send requests. </b> \nFor questions, contact the security.
+
+    req_accepted:
+      message: We have successfully <b>completed</b> your request №{id}. \n<i>{datetime}</i>\n{body}
+      keyboard:
+        - - name: View current requests
+            data: view-requests
+        - - name: Send request
+            data: request-start
+    
+    req_updated:
+      message: "Car, that was mentioned in your request №{id}.\n<i>{datetime}</i>\n{body}\n <b>has arrived</b>"
+
+    req_denied:
+      message: "Sorry, your request №{id}. \n<i>{datetime}</i>\n{body} \n\n<b>has been declined </b>"
+      keyboard:
+        - - name: View current requests
+            data: view-requests
+        - - name: Send request
+            data: request-start
+
+    req_unaccepted:
+      message: "Your completed request №{id}. \n<i>{datetime}</i>\n{body}\n\n <b>has just been marked as unfulfilled, it may be executed in a while.</b>"
+      keyboard:
+        - - name: View current requests
+            data: view-requests
+        - - name: Send request
+            data: request-start
+
+    req_undenied:
+      message: "Your request, which was rejected №{id}.\n<i>{datetime}</i>\n{body}\n\n<b> has just been marked as not yet executed, may still be executed via for a while.</b>"
+      keyboard:
+        - - name: View current requests
+            data: view-requests
+        - - name: Send request
+            data: request-start
+  
+    error: An error occured. Tell your security about this, indicating the time.
+  
+  profile:
+    no_user: We don't have your profile yet. Send us your details to identify /identify
+    identified:
+      activated: "You are authorized as: \nName: <b>{firstname}</b> \nSurname: <b> {lastname} </b> \nUsername: <b>{username}</b> \nPhone: <b>{phone}</b> \nAddress: <b>{address} </b> \nYou've been identified. \nYou've paid for security in recent months . \nYou can send requests. "
+      unactivated: "You are authorized as: \nName: <b>{firstname}</b> \nSurname: <b>{lastname}</b> \nUsername: <b>{username}</b> \nPhone number: <b>{phone}</b> Address: <b>{address}</b> \nYou are identified. \nYou cannot send requests, because you have not paid for security services in recent months. "
+    unidentified: "You are authorized as: \nName: <b>{firstname} </b> \nSurname: <b>{lastname} </b> \nUsername: <b>{username} </b> \nPhone number: <b>{phone} </b> \nAddress: <b>{address} </b>  \nYour identification request has not yet been approved. "
+
+  user_manager:
+    requests_manager:
+      list: "List of requests still in progress: \n{requests}"
+      no_reqs: "You currently have no active requests."
+      buttons:
+        next:
+          name: "Next page"
+          data: "reqmanage-next-page"
+        prev:
+          name: "Previous page"
+          data: "reqmanage-prev-page"
+        cancel_req:
+          name: "Cancel request №{request_id}"
+          data: "cancel-request-{request_id}"
+      lang:
+        keyboard:
+          - - name: "Switch language"
+              data: "switch-lang"
+
+    payments_checker:
+      unpaid: "<b> You have not paid for security services for the following months: </b> \n{months}\nYou can get details or pay in the telegram with the /pay command"
+      ok: "Everything is paid for."
+
+    payment:
+      requisites: "<b>Payment details</b>
+  ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
+  код ЄДРПОУ <code>43152352</code>
+  п/р <code>UA863052990000026005016804997</code>
+  ПАТ КБ «Приватбанк»"
+      start:
+        message: Pay online via Telegram
+        keyboard:
+          - - name: Pay
+              data: pay
+
+    language:
+      choose:
+        message: "Choose your language:"
+        keyboard: 
+          - - name: "Русский"
+              data: "switch-to-russian"
+            - name: "Українська"
+              data: "switch-to-ukrainian"
+            - name: "English"
+              data: "switch-to-english"
+      changed: "You have changed your language to English"
+
+ru:
+  start:
+    first-time:
+      message: "<b>Здраствуйте!</b>\nЗдесь вы можете отправить вашу заявку диспетчеру вашего дома для предупреждения о доставке или гостях.\nНо для начала вам необходимо идентифицировать себя.`
+"
+      keyboard:
+        - - name: "Введите данные для идентификации"
+            data: "identification-start"
+    nonidentified:
+      message: |
+        Приветствуем, {name}!
+        Здесь вы можете отправить вашу заявку диспетчеру вашего дома для предупреждения о доставке или гостях.
+        Вы отправили вашу заявку об идентификации, ожидайте подтверждения.
+      keyboard:
+        - - name: Отправить данные для идентификации заново
+            data: "identification-start"
+    identified:
+      message: |
+        Приветствуем {name}!
+        Вы идентифицированы и можете отправлять заявки.
+      keyboard:
+        - - name: Отправить заявку
+            data: "request-start"
+  
+  identification:
+    start: Введите ваше имя и фамилию
+    get_number:
+      message: Пожалуйста, введите ваш номер телефона в формате +380 *********, или нажмите на кнопку Отправить номер телефона.
+      keyboard:
+        - - name: 📲 Отправить номер телефона
+            contact: yes
+    get_address: "Пожалуйста, введите ваш адерес в формате: Дом/корпус-квартира \nНапример: 15/2-35"
+    contact_not_valid: Вы ввели неправильный номер телефона. Попробуйте снова.
+    address_not_exists: Ваш адрес к сожалению не найден в базе, поэтому я не смогу мониторить состояние ваших оплат и обновлять ваш статус соответственно (возможность отправлять запросы). Возможно вы неправильно ввели полный адрес, за помощью обращайтесь к охране вашего жк. Заявка на идентификацию перейдет к диспетчеру все равно и он сможет вас активировать (будет возможность отправлять запросы), но в целях безопасности статус всех пользователей в начале месяца пересматривается и, возможно, вам придется снова обратиться к диспетчеру.
+    address_success: "Вы успешно отправили данные для идентификации.\nВаши данные будут проверены для активации. Если вы хотите изменить данные, нажмите снова на идентификацию"
+    address_not_activated: Вы не можете отправлять заявки, поскольку не уплатили за последние месяцы
+    error: Произошла ошибка при отправке данных. Сообщите охране в случае, если это повторяется.
+  
+  request:
+    intro:
+      unidentified: "Вас ещё не идентифицировали. Для дополнительной информации можете обратиться к диспетчеру или начните идентификацию по команде /identify"
+      unactivated: "Вы не активированы. Возможно вы пропустили оплату за этот месяц."      
+      get_request: "Напишите пожалуйста цель вашей заявки."    
+    confirm:
+      message: "Вы действительно желаете отправить заявку: \n<i>{body}</i>\nНа имя {name} адрес {address}?"
+      keyboard:
+        - - name: "Yes"
+            data: "yes"
+          - name: "No"
+            data: "no"
+    carnumber:
+      get: "Добавьте номер авто"
+      cancel:  
+        keyboard:
+          - - name: "Отмена"
+              data: "carnumber-cancel"
+      invalid: "Вы ввели неправальный номер авто. \nПожалуйста, повторите"
+      confirm:
+        message: "Вы действительно желаете отправить заявку: \n<i>{body}</i>\nНа имя {name}, адрес {address} и номер авто {carnumber}?"
+        keyboard:
+          - - name: "Да"
+              data: "yes"
+            - name: "Нет"
+              data: "no"
+      nonumber: "Вы действительно желаете отправить заявку: \n<i>{body}</i>\nНа имя {name}, адрес {address} без номера автомобиля?"
+
+
+
+    accepted: <b> Ваша заява успешно принята на квартиру {address} была успешно отправлена </b>
+    denied: Вы отменили вашу заявку
+
+  notify:
+    user_approved:
+      message: <b>Вы прошли идентификацию и теперь можете отправлять заявки в случае если вы проплатили за охрану или диспетчер активировал ваш аккаунт</b>
+      keyboard:
+        - - name: Отправить заявку
+            data: request-start
+
+    user_denied: "<b>К сожалению, вам отказано в идентификации.\nВы не можете отправлять заявки.</b> Если возникли вопросы, стоит обратиться к диспетчеру вашего ЖК."
+
+
+    user_activated:
+      message: <b>Вы были активированы и теперь можете отправлять заявки</b>
+      keyboard:
+        - - name: Send request
+            data: request-start
+
+    user_deactivated: "<b>Вы были деактивированы и теперь не можете отправлять заявки</b>\nВ случае вопросов, обращайтесь к диспетчеру вашего ЖК"
+
+    req_accepted:
+      message:  "Ваша заявка №{id}. \n<i>{body}</i> \n{datetime}\n\nБыла успешно выполнена"
+      keyboard:
+        - - name: Посмотреть текущие заявки
+            data: view-requests
+        - - name: Отправить новую заявку
+            data: request-start
+    
+    req_updated:
+      message: "Автомобиль, указанный в вашей заявке №{id}.\n<i>{datetime}</i>\n{body}\n <b>прибыл на территорию ЖК</b>."
+
+    req_denied:
+      message: "Ваша заявка №{id}.\n<i>{body}</i>\n{datetime}\n\n<b>к сожалению была отклонена</b>"
+      keyboard:
+        - - name: Посмотреть текущие заявки
+            data: view-requests
+        - - name: Отправить новую заявку
+            data: request-start
+
+    req_unaccepted:
+      message: "Ваша выполненная заявка №{id}.\n<i>{body}</i>\n{datetime}\n\n<b>была только что была помечена как еще не выполненная, возможно она будет выполнена через некоторое время</b>"
+      keyboard:
+        - - name: Посмотреть текущие заявки
+            data: view-requests
+        - - name: Отправить новую заявку
+            data: request-start
+
+    req_undenied:
+      message: "Ваша заявка, которая была отклонена №{id}.\n<i>{body}</i>\n{datetime}\n\n<b>была только что была отмечена как еще не выполненная, возможно она еще будет выполнена через некоторое время</b>"
+
+      keyboard:
+        - - name: Посмотреть текущие заявки
+            data: view-requests
+        - - name: Отправить новую заявку
+            data: request-start
+  
+    error: Упс, произошла ошибка, сообщите вашему диспетчеру или попробуйте снова
+  
+
+  profile:
+      no_user: Для начала вам нужно идентифицировать себя
+      identified:
+        activated: "Вы авторизованы как: \nИмя: <b>{firstname}</b> \nФамилия: <b> {lastname} </b> \nЮзернейм: <b>{username}</b> \nТелефон: <b>{phone}</b> \nАдрес: <b>{address} </b> \nВы идентифицированы. \nУ вас по охране проплачены все месяцы. \nВы можете отправлять заявки"
+        unactivated: "Вы авторизованы как: \nИмя: <b>{firstname}</b> \nФамилия: <b> {lastname} </b> \nЮзернейм: <b>{username}</b> \nТелефон: <b>{phone}</b> \nАдрес: <b>{address} </b> \nВы идентифицированы. \nВы не можете отправлять заявки, так как не все месяцы за охрану проплачены"
+      unidentified: "Вы авторизованы как: \nИмя: <b>{firstname}</b> \nФамилия: <b> {lastname} </b> \nЮзернейм: <b>{username}</b> \nТелефон: <b>{phone}</b> \nАдрес: <b>{address} </b>  \nВас еще пока не идентифицировали"
+      lang:
+        keyboard:
+          - - name: "Сменить язык"
+              data: "switch-lang"
+
+  user_manager:
+    requests_manager:
+      list: "Список заявок, которые выполняются: \n{requests}"
+      no_reqs: "На данный момент у вас нету заявок, которые выполняются"
+      buttons:
+        next:
+          name: "Следующая страница"
+          data: "reqmanage-next-page"
+        prev:
+          name: "Предыдущая страница"
+          data: "reqmanage-prev-page"
+        cancel_req:
+          name: "Отменить заявку №{request_id}"
+          data: "cancel-request-{request_id}"
+    
+    payments_checker:
+      unpaid: "<b> У вас не проплачены такие месяцы: </b> \n{months}\nВы можете совершить оплату через команду /pay"
+      ok: "Вы проплатили за охрану"
+
+    payment:
+      requisites: "<b>Детали платежа</b>
+  ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
+  код ЄДРПОУ <code>43152352</code>
+  п/р <code>UA863052990000026005016804997</code>
+  ПАТ КБ «Приватбанк»"
+      start:
+        message: Оплатить онлайн через Телеграмм
+        keyboard:
+          - - name: Оплатить
+              data: pay
+
+    language:
+      choose:
+        message: "Выберите ваш язык:"
+        keyboard: 
+          - - name: "Русский"
+              data: "switch-to-russian"
+            - name: "Українська"
+              data: "switch-to-ukrainian"
+            - name: "English"
+              data: "switch-to-english"
+      changed: "Вы изменили язык на русский"
