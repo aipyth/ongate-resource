@@ -86,39 +86,23 @@ services:
       - oms
     ports:
       - 3000:3000
-      - 3001:3001
-      - 9229:9229
     command: bash -c "node index.js"
 
-  # TODO configure frontend & nginx
-
-  # frontend:
-  #   build: 
-  #     context: ./services/frontend/
-  #     dockerfile: Dockerfile
-  #   volumes: 
-  #     - ./services/frontend:/app
-  #   depends_on:
-  #     - oms
-  #     - api
-  #   ports:
-  #     - 8002:8002
-
-  # nginx:
-  #   build:
-  #     context: src
-  #     dockerfile: nginx.Dockerfile
-  #   environment:
-  #     VIRTUAL_HOST: localhost
-  #   ports:
-  #     - 80:80
-  #     - 443:443
-  #   depends_on:
-  #     - cite
-  #   volumes:
-  #     - ./src/nginx.dev.conf:/etc/nginx/nginx.conf
-  #     - tables:/app/tables
-  #     - ./src/cite/static:/app/static
+  frontend:
+    build: 
+      context: ./services/frontend/
+      dockerfile: Dockerfile
+      target: development
+    environment:
+      API_HOST: api
+      API_PORT: 3000
+      PORT: 8000
+    volumes: 
+      - ./services/frontend:/app
+    depends_on:
+      - api
+    ports:
+      - 8000:8000
 
 volumes: 
   tables:
