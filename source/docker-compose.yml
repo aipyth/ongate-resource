@@ -23,6 +23,8 @@ services:
       - postgres
     env_file:
       - .env
+    # volumes:
+    #   - ./services/oms/server:/main
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_DB: postgres
@@ -78,6 +80,7 @@ services:
       - GRPC_URL=oms:9876
     volumes:
       - ./services/api/src:/app/src
+      - ./services/api/gen:/app/gen
       - tables:/app/tables
     depends_on:
       - oms
@@ -93,16 +96,13 @@ services:
   #   build: 
   #     context: ./services/frontend/
   #     dockerfile: Dockerfile
-  #   environment:
-  #     - NUXT_PORT=3002
-  #     - NUXT_HOST=localhost
   #   volumes: 
   #     - ./services/frontend:/app
   #   depends_on:
   #     - oms
   #     - api
   #   ports:
-  #     - 3002:3000
+  #     - 8002:8002
 
   # nginx:
   #   build:
