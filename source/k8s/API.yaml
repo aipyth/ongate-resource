@@ -1,0 +1,65 @@
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: / spec:
+#       rules:
+#       - http:
+#           paths:
+#           - path: /
+#           pathType: Prefix
+#           backend:
+#             service:
+#             name: app-service
+#             port:
+#               number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: izum-api-service
+
+spec:
+  clusterIP: 10.96.0.4
+  selector:
+    product: izum
+    type: api
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+
+---
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: izum-api
+  labels:
+    product: izum
+    type: api
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      product: izum
+      type: api
+  template:
+    metadata:
+      labels:
+        product: izum
+        type: api
+    spec:
+      containers:
+      - name: izum-api
+        image: registry.gitlab.com/m11259/api:dev
+        envFrom:
+        - configMapRef:
+            name: env-config
+        ports:
+        - containerPort: 3000
+      restartPolicy: Always

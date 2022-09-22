@@ -1,0 +1,66 @@
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: / spec:
+#       rules:
+#       - http:
+#           paths:
+#           - path: /
+#           pathType: Prefix
+#           backend:
+#             service:
+#             name: app-service
+#             port:
+#               number: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: izum-db-driver-service
+spec:
+  clusterIP: 10.96.0.5
+  selector:
+    product: izum
+    type: db-driver
+  ports:
+    - protocol: TCP
+      port: 9876
+      targetPort: 9876
+
+
+---
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: izum-db-driver
+  labels:
+    product: izum
+    type: db-driver
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      product: izum
+      type: db-driver
+  template:
+    metadata:
+      labels:
+        product: izum
+        type: db-driver
+    spec:
+      containers:
+      - name: izum-db-driver
+        ports:
+        - containerPort: 9876
+        image: registry.gitlab.com/m11259/object-model-service:dev
+        envFrom:
+        - configMapRef:
+            name: env-config
+

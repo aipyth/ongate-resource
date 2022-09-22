@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: worker-config
+data:
+  work-config.yml: "# Info for requests sheet\nrequests:\n    # sheet-id is the id
+    in sheet url\n    sheet-id: \n\n# Info for base sheet\nbase:\n    sheet-id: 1D8dSwXrdBYMEnOBH6kECHuIUMEZg_LFAVAV8E6ltzp8\n
+    \   # read-range is the range to read. typically worker is\n    # written for
+    a whole one page. there's no multipage support\n    read-range: \n    - \"'БАЗА'\"\n\n
+    \   # The retrieved data from google sheet api will be considered\n    # valid
+    for such number of minutes\n    sheet-data-limit: 5\n\n    # flat-regex specifies
+    how to read values in flat name column\n    # a value of the first group is picked
+    and there must be only one group\n    address-regexp: \"(.+)\"\n    # Should worker
+    transform address to lowercase\n    address-lowercase: yes\n    # row number (starting
+    from 0) from which flat data rows start\n    # e.g. 3 means fourth row\n    address-row-start:
+    2\n    # column of flat name (address) with same numeration rule\n    address-name-col:
+    1\n    # list of columns to pick phone numbers\n    phone-number-cols:\n        -
+    3\n    # list of columns to pick vin (vehicle identification number)\n    vin-cols:\n
+    \       - 4\n\n# Info for payments sheet\npayments:\n    # sheet-id: 1s0th8qe3f8ndubm0yjl2rmbgyzwe5vv7gbnc0vhddg8\n
+    \   sheet-id: \n    read-range: \"'БАЗА'\"\n\n    # The retrieved data from google
+    sheet api will be considered\n    # valid for such number of minutes\n    sheet-data-limit:
+    5\n\n    address-regexp: \"К-(.+)\"\n    address-lowercase: no\n    address-row-start:
+    3\n    address-name-col: 2\n\n    year-start-col: 8\n    year-row: 0\n\n    #
+    From which month start the payments monitoring\n    year-start: 2020\n    month-start:
+    7\n    # This delta is added to specific year start index (not \n    # year-start-col,
+    but the first occurence of specific\n    # year in row) to correct column\n    year-month-index-delta:
+    -1\n\n    # If payment for some month is > than payment-threshold\n    # then
+    suppose that this month is paid\n    payment-threshold: 70\n\n# How often the
+    redis data would be updated\ntimers:\n    last-months-payments: 0\n    # store
+    unpaid months\n    # spec seconds (integer)\n    # 0 disables the timer\n    unpaid:
+    0\n    # vin from base sheet\n    # spec seconds (integer)\n    # 0 disables the
+    timer\n    vin: 360\n    # phone numbers from base sheet\n    # spec seconds (integer)\n
+    \   # 0 disables the timer\n    phone: 360\n    # write new requests to sheet
+    from redis\n    # spec seconds (integer)\n    # 0 disables the timer\n    new-requests:
+    0\n    # write new requests to sheet from redis\n    # spec seconds (integer)\n
+    \   # 0 disables the timer\n    flats: 360\n    # spec hours (unsigned int type).
+    the time would be truncated down to\n    # to spec hours, then the hours would
+    be added back.\n    # f.i.: 24 hours sets deny ar midnight\n    #       12 hours
+    sets deny at 12pm, 12am\n    #       3 hours sets deny at 12am, 3am, 6am, ...,
+    9pm\n    # 0 disables the timer\n    deny-requests: 24 \n\n    badass: 0\n    disable:
+    0\n\n\n"

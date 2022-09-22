@@ -1,0 +1,89 @@
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: / spec:
+#       rules:
+#       - http:
+#           paths:
+#           - path: /
+#           pathType: Prefix
+#           backend:
+#             service:
+#             name: app-service
+#             port:
+#               number: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: izum-postgres-service
+spec:
+  clusterIP: 10.96.0.3
+  selector:
+    product: izum
+    type: postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+
+---
+apiVersion: apps/v1
+
+kind: StatefulSet
+
+metadata:
+  name: izum-postgres
+  labels:
+    product: izum
+    type: postgres
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      product: izum
+      type: postgres
+  serviceName: izum-postgres-service
+  template:
+    metadata:
+      labels:
+        product: izum
+        type: postgres
+    spec:
+      containers:
+      - name: izum-postgres
+        image: postgres:12
+        envFrom:
+        - configMapRef:
+            name: env-config
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: "/usr/local/etc/postgres/postgres.conf"
+          name: posgres-persistent-storage
+      volumes:
+        - name: posgres-persistent-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
+      # restartPolicy: Always
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv-claim
+  labels:
+    product: izum
+    type: postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---

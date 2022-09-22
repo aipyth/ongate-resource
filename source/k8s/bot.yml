@@ -1,0 +1,63 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: izum-bot-service
+
+spec:
+  clusterIP: "None"
+  selector:
+    product: izum
+    type: bot
+
+---
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: izum-bot
+  labels:
+    product: izum
+    type: bot
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      product: izum
+      type: bot
+  template:
+    metadata:
+      labels:
+        product: izum
+        type: bot
+    spec:
+      containers:
+      - name: izum-bot
+        image: registry.gitlab.com/m11259/telegram-bot:latest
+        envFrom:
+        - configMapRef:
+            name: env-config
+        volumeMounts:
+          - name: izum-bot-config
+            mountPath: /config.json
+            subPath: config.json
+          - name: izum-bot-sigma
+            mountPath: /sigma-config.yml
+            subPath: sigma-config.yml
+            
+      restartPolicy: Always
+      volumes:
+        - name: izum-bot-config
+          configMap:
+            name: bot-config
+            items:
+              - key: config.json
+                path: config.json
+        - name: izum-bot-sigma
+          configMap:
+            name: sigma-config
+            items:
+              - key: sigma-config.yml
+                path: sigma-config.yml
