@@ -18,13 +18,13 @@ services:
   oms:
     build:
       context: ./services/oms/
-      dockerfile: build/package/Dockerfile
+      dockerfile: Dockerfile
     depends_on: 
       - postgres
     env_file:
       - .env
-    # volumes:
-    #   - ./services/oms/server:/main
+    volumes:
+      - ./services/oms/server:/main
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_DB: postgres
@@ -85,8 +85,7 @@ services:
     depends_on:
       - oms
     ports:
-      - 3000:3000
-    command: bash -c "node index.js"
+      - 3001:3000
 
   frontend:
     build: 
