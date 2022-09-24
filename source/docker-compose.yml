@@ -78,6 +78,7 @@ services:
     environment:
       - WEB_PORT=3000
       - GRPC_URL=oms:9876
+      - DOMAIN=localhost
     volumes:
       - ./services/api/src:/app/src
       - ./services/api/gen:/app/gen
@@ -91,7 +92,7 @@ services:
     build: 
       context: ./services/frontend/
       dockerfile: Dockerfile
-      target: development
+      target: production
     environment:
       API_HOST: api
       API_PORT: 3000
@@ -101,7 +102,11 @@ services:
     depends_on:
       - api
     ports:
-      - 8000:8000
+      - 8000:80
+      - 2019:2019
 
 volumes: 
   tables:
+  caddy_data:
+    # external: true
+  caddy_config:
