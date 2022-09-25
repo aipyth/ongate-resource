@@ -89,22 +89,22 @@ services:
     ports:
       - 3000:3000
 
-  # frontend:
-  #   build: 
-  #     context: ./services/frontend/
-  #     dockerfile: Dockerfile
-  #     target: development
-  #   environment:
-  #     API_HOST: api
-  #     API_PORT: 3000
-  #     PORT: 8000
-  #   volumes: 
-  #     - ./services/frontend:/app
-  #   depends_on:
-  #     - api
-  #   ports:
-  #     - 8000:80
-  #     - 2019:2019
+  frontend:
+    build: 
+      context: ./services/frontend/
+      dockerfile: Dockerfile
+      target: development
+    environment:
+      API_HOST: api
+      API_PORT: 3000
+      PORT: 8000
+    volumes: 
+      - ./services/frontend:/app
+    depends_on:
+      - api
+    ports:
+      - 8000:8000
+      - 2019:2019
 
 volumes: 
   tables:
