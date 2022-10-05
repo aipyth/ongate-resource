@@ -32,6 +32,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_SSLMODE: disable
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_DB: 0
       PORT: 9876
       MIGRATE_VERSION: 5
       ENVIRONMENT: development
