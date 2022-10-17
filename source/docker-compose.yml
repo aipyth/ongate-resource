@@ -21,11 +21,15 @@ services:
       dockerfile: Dockerfile
     depends_on: 
       - postgres
+      - redis
     env_file:
       - .env
     volumes:
       - ./services/oms/server:/main
     environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_DB: 0
       POSTGRES_HOST: postgres
       POSTGRES_DB: postgres
       POSTGRES_PORT: 5432
@@ -56,20 +60,21 @@ services:
   #   env_file:
   #     - .env
 
-  # telegram-bot:
-  #   build:
-  #     context: ./services/telegram-bot
-  #     dockerfile: Dockerfile
-  #   restart: unless-stopped
-  #   env_file: 
-  #     - .env
-  #   volumes: 
-  #     # - ./<executable>:/main
-  #     - ./configs/telegram-bot/config.json:/config.json
-  #     - ./configs/telegram-bot/sigma-config.yml:/sigma-config.yml
-  #   depends_on:
-  #     - database
-  #     - redis
+  telegram-bot:
+    build:
+      context: ./services/telegram-bot
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: 
+      - .env
+    volumes: 
+      # - ./<executable>:/main
+      - ./services/telegram-bot/main:/main
+      - ./configs/telegram-bot/config.json:/config.json
+      - ./configs/telegram-bot/sigma-config.yml:/sigma-config.yml
+    depends_on:
+      - database
+      - redis
 
   api:
     build:

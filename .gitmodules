@@ -13,3 +13,6 @@
 [submodule "source/services/oms"]
 	path = source/services/oms
 	url = git@gitlab.com:m11259/object-model-service.git
+[submodule "source/services/nigga"]
+	path = source/services/nigga
+	url = git@gitlab.com:m11259/nigga.git
