@@ -9,7 +9,7 @@ services:
       - 6379:6379
 
   postgres:
-    image: postgres:14
+    image: postgres:15
     env_file:
       - .env
     ports: 
@@ -36,9 +36,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_SSLMODE: disable
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_DB: 0
       PORT: 9876
       MIGRATE_VERSION: 5
       ENVIRONMENT: development
@@ -73,8 +70,7 @@ services:
       - ./configs/telegram-bot/config.json:/config.json
       - ./configs/telegram-bot/sigma-config.yml:/sigma-config.yml
     depends_on:
-      - database
-      - redis
+      - oms
 
   api:
     build:
