@@ -3,17 +3,17 @@
   editable: yes
   template:
     uk: |
-      Вітаємо!
+      *Вітаємо!*
       Тут ви можете надіслати заявку диспетчеру вашого будинку для попередження про доставку або гостей.
       Але для початку вам потрібно надати інформацію для ідентифікації вас.
     ru: |
-      **Здраствуйте!**
+      *Здраствуйте!*
       Здесь вы можете отправить вашу заявку диспетчеру вашего дома для предупреждения о доставке или гостях.
       Но для начала вам необходимо идентифицировать себя.
     en: | 
-      Hello!
-      Here you can send a request to your guard service to warn about delivery or guests.
-      But first you need to provide information to identify you."
+      *Hello!* 
+      Here you can send a request to your guard service to warn about delivery or guests. 
+      But first you need to provide information to _identify_ you.
   description:
   vars:
   keyboard:
@@ -647,11 +647,23 @@
   editable: yes
   template:
     uk: |
-      **Реквізити для оплати**
+      *Реквізити для оплати*
+      ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
+      код ЄДРПОУ <code>43152352</code>
+      п/р <code>UA863052990000026005016804997</code>
+      ПАТ КБ «Приватбанк»"
     ru: |
-      **Реквизиты для оплаты**
+      *Реквизиты для оплаты*
+      ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
+      код ЄДРПОУ <code>43152352</code>
+      п/р <code>UA863052990000026005016804997</code>
+      ПАТ КБ «Приватбанк»"
     en: |
-      **Payment requisites**
+      *Payment requisites*
+      ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
+      код ЄДРПОУ <code>43152352</code>
+      п/р <code>UA863052990000026005016804997</code>
+      ПАТ КБ «Приватбанк»"
   description:
   vars:
   keyboard:
