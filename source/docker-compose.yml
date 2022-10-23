@@ -64,6 +64,8 @@ services:
     restart: unless-stopped
     env_file: 
       - .env
+    environment:
+      GRPC_URL: oms:9876
     volumes: 
       # - ./<executable>:/main
       - ./services/telegram-bot/main:/main
@@ -91,7 +93,7 @@ services:
     depends_on:
       - oms
     ports:
-      - 3000:3000
+      - 3001:3000
 
   frontend:
     build: 
