@@ -85,11 +85,11 @@
 
 'identification:get-number':
   section: identification
-  editable: yes
+  editable: no
   template:
-    uk: Введіть, будь ласка, ваш мобільний номер телефону в форматі +380*********, або натисніть кнопку відправки вашого контакту.
-    ru: Пожалуйста, введите ваш номер телефона в формате +380 *********, или нажмите на кнопку Отправить номер телефона.
-    en: Please enter your mobile phone number in the format +380 *********, or click the button to send your contact.
+    uk: Введіть, будь ласка, ваш мобільний номер телефону в форматі +380\*\*\*\*\*\*\*\*\*, або натисніть кнопку відправки вашого контакту.
+    ru: Пожалуйста, введите ваш номер телефона в формате +380\*\*\*\*\*\*\*\*\*, или нажмите на кнопку Отправить номер телефона.
+    en: Please enter your mobile phone number in the format +380\*\*\*\*\*\*\*\*\*, or click the button to send your contact.
   description:
   vars:
   keyboard:
@@ -105,7 +105,7 @@
   template:
     uk: |
       Будь ласка, напишіть точний номер вашої адреси у форматі *Дім/корпус-квартира*
-      'Наприклад:' 15/2-35
+      Наприклад: 15/2-35
     ru: "Пожалуйста, введите ваш адерес в формате: Дом/корпус-квартира \nНапример: 15/2-35"
     en: "Please write the exact number of your address in the format: House/apartment-building \nExample: 15/2-35"
   description:
@@ -238,7 +238,7 @@
   template:
     uk: Додати номер авто до заявки
     ru: Добавьте номер авто
-    en: "Add a car number to you request"
+    en: Add a car number to your request
   description:
   vars:
   keyboard:
@@ -293,9 +293,9 @@
   section: request
   editable: yes
   template:
-    uk: "Ви справді бажаєте надіслати запит:: \n<i>{body}</i>\nНа ваше ім'я {name}, адресу {address} ви не додали номер авто?"
-    ru: "Вы действительно желаете отправить заявку: \n<i>{body}</i>\nНа имя {name}, адрес {address} без номера автомобиля?"
-    en: "Are you sure you want to send the request: \n<i>{body}</i>\nsigning your name {name}, address {address} without carnumber?"
+    uk: "Ви справді бажаєте надіслати запит:: \n_{body}_\nНа ваше ім'я {name}, адресу {address} ви не додали номер авто?"
+    ru: "Вы действительно желаете отправить заявку: \n_{body}_\nНа имя {name}, адрес {address} без номера автомобиля?"
+    en: "Are you sure you want to send the request: \n_{body}_\nsigning your name {name}, address {address} without carnumber?"
   description:
   vars:
     body:
@@ -304,12 +304,12 @@
   keyboard:
     - - text:
           uk: Так
-          ru: <string>
+          ru: Да
           en: Yes
         data: 'yes'
       - text:
           uk: Ні
-          ru: <string>
+          ru: Нет
           en: No
         data: 'no'
 
@@ -317,9 +317,9 @@
   section: request
   editable: yes
   template:
-    uk: <b>Ваш запит по адресі {address} був успішно надісланий.</b>
-    ru: <b> Ваша заява успешно принята на квартиру {address} была успешно отправлена </b>
-    en: <b> Your request to {address} has been successfully sent. </b>
+    uk: "*Ваш запит по адресі {address} був успішно надісланий.*"
+    ru: "*Ваша заявка успешно принята на квартиру {address} была успешно отправлена.*"
+    en: "*Your request to {address} has been successfully sent.*"
   description:
   vars:
     address:
