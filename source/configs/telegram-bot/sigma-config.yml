@@ -106,8 +106,12 @@
     uk: |
       Будь ласка, напишіть точний номер вашої адреси у форматі *Дім/корпус-квартира*
       Наприклад: 15/2-35
-    ru: "Пожалуйста, введите ваш адерес в формате: Дом/корпус-квартира \nНапример: 15/2-35"
-    en: "Please write the exact number of your address in the format: House/apartment-building \nExample: 15/2-35"
+    ru: |
+      Пожалуйста, введите ваш адерес в формате: *Дом/корпус-квартира*
+      Например: 15/2-35"
+    en: |
+      Please write the exact number of your address in the format: *House/apartment-building*
+      Example: 15/2-35"
   description:
   vars:
   keyboard:
@@ -212,10 +216,16 @@
   template:
     uk: |
       Ви справді бажаєте надіслати запит 
-      <i>{body}</i>
+      _{body}_
       На ваше ім'я {name} та адрес {address}?
-    ru: "Вы действительно желаете отправить заявку: \n<i>{body}</i>\nНа имя {name} адрес {address}?"
-    en: "Are you sure you want to send the request: \n<i>{body}</i>\nsigning your name {name} and address {address}?"
+    ru: |
+      Вы действительно желаете отправить заявку
+      _{body}_
+      На имя {name} адрес {address}?"
+    en: |
+      Are you sure you want to send the request:
+      _{body}_
+      signing your name {name} and address {address}?
   description:
   vars:
     name:
@@ -252,9 +262,15 @@
   section: request
   editable: yes
   template:
-    uk: "Ви ввели невірний номер. \nБудь ласка, спробуйте знову"
-    ru: "Вы ввели неправальный номер авто. \nПожалуйста, повторите"
-    en: "You've put invalid carnumber. \nPlease, retry"
+    uk: |
+      Ви ввели невірний номер.
+      Будь ласка, спробуйте знову
+    ru: |
+      Вы ввели неправальный номер авто.
+      Пожалуйста, повторите
+    en: |
+      You've put invalid carnumber.
+      Please, retry
   description:
   vars:
   keyboard:
@@ -268,9 +284,18 @@
   section: request
   editable: yes
   template:
-    uk: 'Ви справді бажаєте надіслати запит: \n<i>{body}</i>\nНа ваше ім`я {name}, адресу {address} з номером авто {carnumber}?'
-    ru: "Вы действительно желаете отправить заявку: \n<i>{body}</i>\nНа имя {name}, адрес {address} и номер авто {carnumber}?"
-    en: "Are you sure you want to send the request: \n<i>{body}</i>\nsigning your name {name}, address {address} and car number {carnumber}?"
+    uk: |
+      Ви справді бажаєте надіслати запит: 
+      _{body}_
+      На ваше ім`я {name}, адресу {address} з номером авто {carnumber}?
+    ru: |
+      Вы действительно желаете отправить заявку: 
+      _{body}_
+      На имя {name}, адрес {address} и номер авто {carnumber}?
+    en: |
+      Are you sure you want to send the request:
+      _{body}_
+      signing your name {name}, address {address} and car number {carnumber}?
   description:
   vars:
     body:
@@ -293,9 +318,18 @@
   section: request
   editable: yes
   template:
-    uk: "Ви справді бажаєте надіслати запит:: \n_{body}_\nНа ваше ім'я {name}, адресу {address} ви не додали номер авто?"
-    ru: "Вы действительно желаете отправить заявку: \n_{body}_\nНа имя {name}, адрес {address} без номера автомобиля?"
-    en: "Are you sure you want to send the request: \n_{body}_\nsigning your name {name}, address {address} without carnumber?"
+    uk: |
+      Ви справді бажаєте надіслати запит:
+      _{body}_
+      На ваше ім'я {name}, адресу {address}? Bи не додали номер авто.
+    ru: |
+      Вы действительно желаете отправить заявку: 
+      _{body}_
+      На имя {name}, адрес {address} без номера автомобиля?
+    en: |
+      Are you sure you want to send the request: 
+      _{body}_
+      signing your name {name}, address {address} without carnumber?"
   description:
   vars:
     body:
@@ -340,9 +374,9 @@
   section: notifications
   editable: yes
   template:
-    uk: <b>Ваш запит на ідентифікацію буде схвалено.</b>
-    ru: <b>Вы прошли идентификацию и теперь можете отправлять заявки в случае если вы проплатили за охрану или диспетчер активировал ваш аккаунт</b>
-    en: <b> Your identification request has been approved. </b>
+    uk: "*Ваш запит на ідентифікацію буде схвалено.*"
+    ru: "*Вы прошли идентификацию и теперь можете отправлять заявки в случае если вы проплатили за охрану или диспетчер активировал ваш аккаунт*"
+    en: "*Your identification request has been approved.*"
   description:
   vars:
   keyboard:
@@ -351,9 +385,18 @@
   section: notifications
   editable: yes
   template:
-    uk: <b>На жаль, вам відмовлено в ідентифікації.\nВи не зможете надсилати запити охороні.</b> Якщо виникли питання, вам варто звернутися до охорони вашого ЖК.
-    ru: "<b>К сожалению, вам отказано в идентификации.\nВы не можете отправлять заявки.</b> Если возникли вопросы, стоит обратиться к диспетчеру вашего ЖК."
-    en: <b> Sorry, we denied your identification. \nYou will not be able to submit requests. </b>If you have any questions, please contact the security.
+    uk: |
+      *На жаль, вам відмовлено в ідентифікації.
+      Ви не зможете надсилати запити охороні.* 
+      Якщо виникли питання, вам варто звернутися до охорони вашого ЖК.
+    ru: |
+      *К сожалению, вам отказано в идентификации.
+      Вы не можете отправлять заявки.* 
+      Если возникли вопросы, стоит обратиться к диспетчеру вашего ЖК.
+    en: |
+      *Sorry, we denied your identification.
+      You will not be able to submit requests.*
+      If you have any questions, please contact the security.
   description:
   vars:
   keyboard:
@@ -362,15 +405,15 @@
   section: request
   editable: yes
   template:
-    uk: <b>Ви були активовані для надсилання запитів вашій охороні.</b>
-    ru: <b>Вы были активированы и теперь можете отправлять заявки</b>
-    en: <b> You have been activated to send requests to your security. </b>
+    uk: "*Ви були активовані для надсилання запитів вашій охороні.*"
+    ru: "*Вы были активированы и теперь можете отправлять заявки*"
+    en: "*You have been activated to send requests to your security.*"
   description:
   vars:
   keyboard:
     - - text:
           uk: Надіслати запит
-          ru: <string>
+          ru: Отправить заявку
           en: Send request
         data: 'request-start'
 
@@ -378,9 +421,15 @@
   section: request
   editable: yes
   template:
-    uk: <b>Ви були деактивовані та не зможете надсилати запити.</b>\nДля запитань, зверніться до охорони вашого ЖК.
-    ru: "<b>Вы были деактивированы и теперь не можете отправлять заявки</b>\nВ случае вопросов, обращайтесь к диспетчеру вашего ЖК"
-    en: <b> You have been deactivated and will not be able to send requests. </b> \nFor questions, contact the security.
+    uk: |
+      *Ви були деактивовані та не зможете надсилати запити.*
+      Для запитань, зверніться до охорони вашого ЖК.
+    ru: |
+      *Вы были деактивированы и теперь не можете отправлять заявки.*
+      В случае вопросов, обращайтесь к диспетчеру вашего ЖК"
+    en: |
+      *You have been deactivated and will not be able to send requests.*
+      For questions, contact the security.
   description:
   vars:
   keyboard:
@@ -389,9 +438,19 @@
   section: request
   editable: yes
   template:
-    uk: "Ми успішно <b>виконали</b> ваш запит №{id}.\n<i>{datetime}</i>\n{body}"
-    ru: "Ваша заявка №{id}. \n<i>{body}</i> \n{datetime}\n\nБыла успешно выполнена"
-    en: We have successfully <b>completed</b> your request №{id}. \n<i>{datetime}</i>\n{body}
+    uk: |
+      Ми успішно *виконали* ваш запит №{id}
+      {body}
+      _{datetime}_
+    ru: |
+      Ваша заявка №{id}.
+      {body} 
+      _{datetime}_
+      Была успешно *выполнена*.
+    en: |
+      We have successfully *completed* your request №{id} 
+      {body}
+      _{datetime}_
   description:
   vars:
     id:
@@ -413,9 +472,20 @@
   section: request
   editable: yes
   template:
-    uk: "Автомобіль за вашим запитом №{id}.\n<i>{datetime}</i>\n{body}\n <b>в'їхав на територію ЖК</b>."
-    ru: "Автомобиль, указанный в вашей заявке №{id}.\n<i>{datetime}</i>\n{body}\n <b>прибыл на территорию ЖК</b>."
-    en: "Car, that was mentioned in your request №{id}.\n<i>{datetime}</i>\n{body}\n <b>has arrived</b>"
+    uk: |
+      Автомобіль за вашим запитом №{id}
+      _{datetime}_
+      {body} 
+      *в'їхав на територію ЖК.*
+    ru: |
+      Автомобиль, указанный в вашей заявке №{id}
+      _{datetime}_
+      {body} 
+      *прибыл на территорию ЖК*."
+    en: Car, that was mentioned in your request №{id}
+      _{datetime}_
+      {body}
+      *has arrived*"
   description:
   vars:
     datetime:
@@ -426,9 +496,21 @@
   section: request
   editable: yes
   template:
-    uk: На жаль, ваш запит №{id}.\n<i>{datetime}</i>\n{body}\n\n<b>був відхилений</b>
-    ru: "Ваша заявка №{id}.\n<i>{body}</i>\n{datetime}\n\n<b>к сожалению была отклонена</b>"
-    en: "Sorry, your request №{id}. \n<i>{datetime}</i>\n{body} \n\n<b>has been declined </b>"
+    uk: |
+      На жаль, ваш запит №{id}
+      _{datetime}_
+      {body}
+      *був відхилений*
+    ru: |
+      Ваша заявка №{id}.
+      _{body}_
+      {datetime}
+      *к сожалению была отклонена*
+    en: |
+      Sorry, your request №{id}
+      _{datetime}_
+      {body}
+      *has been declined*
   description:
   vars:
     id:
@@ -442,7 +524,7 @@
   template:
     uk: Сталася помилка. Повідомте вашій охороні про це, зазначивши час.
     ru: Упс, произошла ошибка, сообщите вашему диспетчеру или попробуйте снова
-    en: An error occured. Tell your security about this, indicating the time.
+    en: An error occurred. Tell your security about this, indicating the time.
   description:
   vars:
   keyboard:
@@ -451,9 +533,21 @@
   section: request
   editable: yes
   template:
-    uk: "Ваша виконана заявка №{id}.\n<i>{datetime}</i>\n{body}\n\n<b>була щойно позначена як ще не виконана, можливо вона буде виконана через деякий час.</b>"
-    ru: "Ваша выполненная заявка №{id}.\n<i>{body}</i>\n{datetime}\n\n<b>была только что была помечена как еще не выполненная, возможно она будет выполнена через некоторое время</b>"
-    en: "Your completed request №{id}. \n<i>{datetime}</i>\n{body}\n\n <b>has just been marked as unfulfilled, it may be executed in a while.</b>"
+    uk: |
+      Ваша виконана заявка №{id}.
+      _{datetime}_
+      {body}
+      *була щойно позначена як ще не виконана, можливо вона буде виконана через деякий час.*
+    ru: |
+      Ваша выполненная заявка №{id}
+      _{body}_
+      {datetime}
+      *была только что была помечена как еще не выполненная, возможно она будет выполнена через некоторое время*
+    en: |
+      Your completed request №{id}
+      _{datetime}_
+      {body}
+      *has just been marked as unfulfilled, it may be executed in a while.
   description:
   vars:
     datetime:
@@ -474,9 +568,21 @@
   section: request
   editable: yes
   template:
-    uk: Ваш запит, який було відхилено №{id}.\n<i>{datetime}</i>\n{body}\n\n<b> щойно було позначено як ще не виконаний, все ще може бути виконано через для деякий час.</b>
-    ru: "Ваша заявка, которая была отклонена №{id}.\n<i>{body}</i>\n{datetime}\n\n<b>была только что была отмечена как еще не выполненная, возможно она еще будет выполнена через некоторое время</b>"
-    en: "Your request, which was rejected №{id}.\n<i>{datetime}</i>\n{body}\n\n<b> has just been marked as not yet executed, may still be executed via for a while.</b>"
+    uk: |
+      Ваш запит, який було відхилено №{id}
+      _{datetime}_
+      {body}
+      *щойно було позначено як ще не виконаний, все ще може бути виконано через для деякий час.*
+    ru: |
+      Ваша заявка, которая была отклонена №{id}
+      _{body}_
+      {datetime}
+      *была только что была отмечена как еще не выполненная, возможно она еще будет выполнена через некоторое время*
+    en: |
+      Your request, which was rejected №{id}
+      _{datetime}_
+      {body}
+      *has just been marked as not yet executed, may still be executed via for a while.*
   description:
   vars:
     datetime:
@@ -493,81 +599,7 @@
           en: Send request
         data: 'request-start'
 
-'profile:no-user':
-  section: profile
-  editable: yes
-  template:
-    uk: Наразі, у нас немає вашого профілю. Надішліть нам свої дані для ідентифікації /identify
-    ru: Для начала вам нужно идентифицировать себя
-    en: We don't have your profile yet. Send us your details to identify /identify
-  description:
-  vars:
-  keyboard:
-
-'profile:identified:activated':
-  section: profile
-  editable: yes
-  template:
-    uk: "Ви авторизовані як:\nІм'я: <b>{firstname}</b>\nПрізвище: <b>{lastname}</b>\nUsername: <b>{username}</b>\nНомер телефону: <b>{phone}</b>Адреса: <b>{address}</b>\nВи ідентифіковані.\nВи оплатили охорону за останні місяці.\nВи можете надсилати запити."
-    ru: "Вы авторизованы как: \nИмя: <b>{firstname}</b> \nФамилия: <b> {lastname} </b> \nЮзернейм: <b>{username}</b> \nТелефон: <b>{phone}</b> \nАдрес: <b>{address} </b> \nВы идентифицированы. \nУ вас по охране проплачены все месяцы. \nВы можете отправлять заявки"
-    en: "You are authorized as: \nName: <b>{firstname}</b> \nSurname: <b> {lastname} </b> \nUsername: <b>{username}</b> \nPhone: <b>{phone}</b> \nAddress: <b>{address} </b> \nYou've been identified. \nYou've paid for security in recent months . \nYou can send requests. "
-  description:
-  vars:
-    firstname:
-    lastname:
-    username:
-    phone:
-    address:
-  keyboard:
-    - - text:
-          uk: Змінити мову
-          ru: Сменить язык
-          en: Change language
-        data: 'switch-lang'
-
-'profile:identified:unactivated':
-  section: profile
-  editable: yes
-  template:
-    uk: "Ви авторизовані як:\nІм'я: <b>{firstname}</b>\nПрізвище: <b>{lastname}</b>\nUsername: <b>{username}</b>\nНомер телефону: <b>{phone}</b>Адреса: <b>{address}</b>\n \nВи ідентифіковані.\nВи не можете надсилати запити, оскільки не оплатили послуги охорони за останні місяці."
-    ru: "Вы авторизованы как: \nИмя: <b>{firstname}</b> \nФамилия: <b> {lastname} </b> \nЮзернейм: <b>{username}</b> \nТелефон: <b>{phone}</b> \nАдрес: <b>{address} </b> \nВы идентифицированы. \nВы не можете отправлять заявки, так как не все месяцы за охрану проплачены"
-    en: "You are authorized as: \nName: <b>{firstname}</b> \nSurname: <b>{lastname}</b> \nUsername: <b>{username}</b> \nPhone number: <b>{phone}</b> Address: <b>{address}</b> \nYou are identified. \nYou cannot send requests, because you have not paid for security services in recent months. "
-  description:
-  vars:
-    firstname:
-    lastname:
-    username:
-    phone:
-    address:
-  keyboard:
-    - - text:
-          uk: Змінити мову
-          ru: Сменить язык
-          en: Change language
-        data: 'switch-lang'
-
-'profile:unidentified':
-  section: profile
-  editable: yes
-  template:
-    uk: "Ви авторизовані як:\nІм'я: <b>{firstname}</b>\nПрізвище: <b>{lastname}</b>\nUsername: <b>{username}</b>\nНомер телефону: <b>{phone}</b>Адреса: <b>{address}</b> \nВаш запит на ідентифікацію все ще не схвалено."
-    ru: "Вы авторизованы как: \nИмя: <b>{firstname}</b> \nФамилия: <b> {lastname} </b> \nЮзернейм: <b>{username}</b> \nТелефон: <b>{phone}</b> \nАдрес: <b>{address} </b>  \nВас еще пока не идентифицировали"
-    en: "You are authorized as: \nName: <b>{firstname} </b> \nSurname: <b>{lastname} </b> \nUsername: <b>{username} </b> \nPhone number: <b>{phone} </b> \nAddress: <b>{address} </b>  \nYour identification request has not yet been approved. "
-  description:
-  vars:
-    firstname:
-    lastname:
-    username:
-    phone:
-    address:
-  keyboard:
-    - - text:
-          uk: Змінити мову
-          ru: Сменить язык
-          en: Switch language
-        data: 'switch-lang'
-
-'profile:request-manager:buttons':
+'request-manager:buttons':
   section: profile
   editable: no
   template:
@@ -586,35 +618,187 @@
           uk: Попередня сторінка
           ru: Предыдущая страница
           en: Previous page
-        data: reqmanage-next-page
+        data: reqmanage-prev-page
     - - text:
           uk: Відмінити запит №{request_id}
           ru: Отменить заявку №{request_id}
           en: Cancel request №{request_id}
         data: cancel-request-{request_id}
 
-'profile:request-manager:list':
+'request-manager:list':
   section: profile
   editable: no
   template:
-    uk: "Список запитів, які все ще у процесі виконання:\n{requests}"
-    ru: "Список заявок, которые выполняются: \n{requests}"
-    en: "List of requests still in progress: \n{requests}"
+    uk: |
+      Список запитів, які все ще у процесі виконання:
+      {requests}
+    ru: |
+      Список заявок, которые выполняются:
+      {requests}
+    en: |
+      List of requests still in progress:
+      {requests}
   description:
   vars:
     requests:
   keyboard:
 
-'profile:request-manager:no-reqs':
+'request-manager:no-reqs':
   section: profile
   editable: no
   template:
     uk: "Наразі у вас немає активних запитів."
     ru: "На данный момент у вас нету заявок, которые выполняются"
-    en:
+    en: "Currently you don't have active requests."
   description:
   vars:
   keyboard:
+
+'profile:no-user':
+  section: profile
+  editable: yes
+  template:
+    uk: Наразі, у нас немає вашого профілю. Надішліть нам свої дані для ідентифікації /identify
+    ru: Для начала вам нужно идентифицировать себя
+    en: We don't have your profile yet. Send us your details to identify /identify
+  description:
+  vars:
+  keyboard:
+
+'profile:identified:activated':
+  section: profile
+  editable: yes
+  template:
+    uk: |
+      Ви авторизовані як:
+      Ім'я: *{firstname}*
+      Прізвище: *{lastname}*
+      Username: *{username}*
+      Номер телефону: *{phone}*
+      Адреса: *{address}*
+      Ви ідентифіковані.
+      Ви оплатили охорону за останні місяці.
+      Ви можете надсилати запити."
+    ru: |
+      Вы авторизованы как:
+      Имя: *{firstname}*
+      Фамилия: *{lastname}*
+      Юзернейм: *{username}*
+      Телефон: *{phone}*
+      Адрес: *{address}*
+      Вы идентифицированы.
+      У вас по охране проплачены все месяцы.
+      Вы можете отправлять заявки"
+    en: |
+      You are authorized as:
+      Name: *{firstname}*
+      Surname: *{lastname}*
+      Username: *{username}*
+      Phone: *{phone}*
+      Address: *{address}*
+      You've been identified.
+      You've paid for security in recent months.
+      You can send requests. "
+  description:
+  vars:
+    firstname:
+    lastname:
+    username:
+    phone:
+    address:
+  keyboard:
+    - - text:
+          uk: Змінити мову
+          ru: Сменить язык
+          en: Change language
+        data: 'switch-lang'
+
+'profile:identified:unactivated':
+  section: profile
+  editable: yes
+  template:
+    uk: |
+      Ви авторизовані як:
+      Ім'я: *{firstname}*
+      Прізвище: *{lastname}*
+      Username: *{username}*
+      Номер телефону: *{phone}*
+      Адреса: *{address}*
+      Ви ідентифіковані.
+      Ви не можете надсилати запити, оскільки не оплатили послуги охорони за останні місяці.
+    ru: | 
+      Вы авторизованы как:
+      Имя: *{firstname}*
+      Фамилия: *{lastname}*
+      Юзернейм: *{username}*
+      Телефон: *{phone}*
+      Адрес: *{address}*
+      Вы идентифицированы.
+      Вы не можете отправлять заявки, так как не все месяцы за охрану проплачены
+    en: |
+      You are authorized as:
+      Name: *{firstname}*
+      Surname: *{lastname}*
+      Username: *{username}*
+      Phone: *{phone}*
+      Address: *{address}*
+      You've been identified.
+      You cannot send requests, because you have not paid for security services in recent months.
+  description:
+  vars:
+    firstname:
+    lastname:
+    username:
+    phone:
+    address:
+  keyboard:
+    - - text:
+          uk: Змінити мову
+          ru: Сменить язык
+          en: Change language
+        data: 'switch-lang'
+
+'profile:unidentified':
+  section: profile
+  editable: yes
+  template:
+    uk: |
+      Вы авторизованы как:
+      Имя: *{firstname}*
+      Фамилия: *{lastname}*
+      Юзернейм: *{username}*
+      Телефон: *{phone}*
+      Адрес: *{address}*
+      Ваш запит на ідентифікацію все ще не схвалено.
+    ru: | 
+      Вы авторизованы как:
+      Имя: *{firstname}*
+      Фамилия: *{lastname}*
+      Юзернейм: *{username}*
+      Телефон: *{phone}*
+      Адрес: *{address}*
+      Вас еще пока не идентифицировали
+    en: |
+      You are authorized as:
+      Name: *{firstname}*
+      Surname: *{lastname}*
+      Username: *{username}*
+      Phone: *{phone}*
+      Address: *{address}*
+      Your identification request has not yet been approved.
+  description:
+  vars:
+    firstname:
+    lastname:
+    username:
+    phone:
+    address:
+  keyboard:
+    - - text:
+          uk: Змінити мову
+          ru: Сменить язык
+          en: Switch language
+        data: 'switch-lang'
 
 'profile:payments:ok':
   section: profile
@@ -632,11 +816,17 @@
   editable: yes
   template:
     uk: |
-      <b>Ви не сплатили послуги охорони за такі місяці:</b>
+      *Ви не сплатили послуги охорони за такі місяці:*
       {months}
       Отримати реквізити або оплатити в телеграмі можна за командою /pay
-    ru: "<b> У вас не проплачены такие месяцы: </b> \n{months}\nВы можете совершить оплату через команду /pay"
-    en: "<b> You have not paid for security services for the following months: </b> \n{months}\nYou can get details or pay in the telegram with the /pay command"
+    ru: |
+      *У вас не проплачены такие месяцы:*
+      {months}
+      Вы можете совершить оплату через команду /pay"
+    en: |
+      *You have not paid for security services for the following months:*
+      {months}
+      You can get details or pay in the telegram with the /pay command"
   description:
   vars:
     months:
@@ -649,20 +839,20 @@
     uk: |
       *Реквізити для оплати*
       ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
-      код ЄДРПОУ <code>43152352</code>
-      п/р <code>UA863052990000026005016804997</code>
+      код ЄДРПОУ `43152352`
+      п/р `UA863052990000026005016804997`
       ПАТ КБ «Приватбанк»"
     ru: |
       *Реквизиты для оплаты*
       ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
-      код ЄДРПОУ <code>43152352</code>
-      п/р <code>UA863052990000026005016804997</code>
+      код ЄДРПОУ `43152352`
+      п/р `UA863052990000026005016804997`
       ПАТ КБ «Приватбанк»"
     en: |
       *Payment requisites*
       ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
-      код ЄДРПОУ <code>43152352</code>
-      п/р <code>UA863052990000026005016804997</code>
+      код ЄДРПОУ `43152352`
+      п/р `UA863052990000026005016804997`
       ПАТ КБ «Приватбанк»"
   description:
   vars:
@@ -678,11 +868,20 @@
   description:
   vars:
   keyboard:
-    - - name: "Русский"
+    - - text: 
+          uk: "Російська"
+          ru: "Русский"
+          en: "Russian"
         data: "switch-to-russian"
-      - name: "Українська"
+      - text:
+          uk: "Українська"
+          ru: "Украинский"
+          en: "Ukrainian"
         data: "switch-to-ukrainian"
-      - name: "English"
+      - text: 
+          uk: "Англійська"
+          ru: "Английский"
+          en: "English"
         data: "switch-to-english"
 
 'profile:lang:changed':

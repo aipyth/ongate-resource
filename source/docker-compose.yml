@@ -84,6 +84,8 @@ services:
       - GRPC_URL=oms:9876
       - DOMAIN=localhost
       - STAGE=dev
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=pivasik
     volumes:
       - ./services/api/src:/app/src
       - ./services/api/gen:/app/gen
