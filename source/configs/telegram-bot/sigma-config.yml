@@ -14,7 +14,8 @@
       *Hello!* 
       Here you can send a request to your guard service to warn about delivery or guests. 
       But first you need to provide information to _identify_ you.
-  description:
+  description: Стартовое сообщение в первый раз
+  title: "Стартовое сообщение 1"
   vars:
   keyboard:
     - - text:
@@ -39,9 +40,10 @@
       Hello {name}!
       Here you can send a request to your guard service to warn about delivery or guests.
       Your data for identification has been sent and we will review your request shortly.
-  description:
+  description: Стартовое сообщение (пользователь не идентифицирован)
+  title: "Стартовое сообщение 2"
   vars:
-    name:
+    name: Имя пользователя
   keyboard:
     - - text:
           uk: Надіслати дані для ідентифікації ще раз
@@ -62,9 +64,10 @@
     en: |
       Hello {name}!
       Here you can send a request to your guard service for delivery or guest warnings.
-  description:
+  description: Стартовое сообщение (пользователь идентифицирован)
+  title: "Стартовое сообщение 3"
   vars:
-    name:
+    name: Имя пользователя
   keyboard:
     - - text:
           uk: Надіслати запит
@@ -79,7 +82,8 @@
     uk: Введіть, будь ласка, ваше ім'я та прізвище
     ru: Введите ваше имя и фамилию
     en: Please enter your name and surname
-  description:
+  description: Сообщение отправляется при старте идентификации
+  title: "Начало" 
   vars:
   keyboard:
 
@@ -90,7 +94,8 @@
     uk: Введіть, будь ласка, ваш мобільний номер телефону в форматі +380\*\*\*\*\*\*\*\*\*, або натисніть кнопку відправки вашого контакту.
     ru: Пожалуйста, введите ваш номер телефона в формате +380\*\*\*\*\*\*\*\*\*, или нажмите на кнопку Отправить номер телефона.
     en: Please enter your mobile phone number in the format +380\*\*\*\*\*\*\*\*\*, or click the button to send your contact.
-  description:
+  description: Попросить номер телефона при идентификации
+  title: 
   vars:
   keyboard:
     - - text:
@@ -112,18 +117,20 @@
     en: |
       Please write the exact number of your address in the format: *House/apartment-building*
       Example: 15/2-35"
-  description:
+  description: Попросить у пользователя указать адрес
+  title: Взять адрес
   vars:
   keyboard:
 
 'identification:contact-not-valid':
   section: identification
-  editable: yes
+  editable: no
   template:
     uk: Ви неправильно ввели номер. Спробуйте, будь ласка, ще раз.
     ru: Вы ввели неправильный номер телефона. Попробуйте снова.
     en: You entered the wrong number. Please try again.
   description:
+  title:
   vars:
   keyboard:
 
@@ -134,7 +141,8 @@
     uk: Ми не знайшли вашу квартиру в нашій базі. Тому не зможемо слідкувати за станом ваших платежів автоматично та оновлювати ваш статус відповідно, що включає вашу можливіть відправляти запити. Запит на ідентифікацію перейде до диспетчеру все рівно та він зможе вас активувати. Активація дає можливість надсилати запити охороні. Але в цілях безпеки статус всех користувачів на початку місяця оновлюється автоматично і, можливо, вам доведеться знову звернутися до диспетчера.
     ru: Ваш адрес к сожалению не найден в базе, поэтому я не смогу мониторить состояние ваших оплат и обновлять ваш статус соответственно (возможность отправлять запросы). Возможно вы неправильно ввели полный адрес, за помощью обращайтесь к охране вашего жк. Заявка на идентификацию перейдет к диспетчеру все равно и он сможет вас активировать (будет возможность отправлять запросы), но в целях безопасности статус всех пользователей в начале месяца пересматривается и, возможно, вам придется снова обратиться к диспетчеру.
     en: We did not find your apartment in our database. Therefore, we will not be able to monitor the status of your payments automatically and update your status accordingly, which includes your ability to submit requests. The request for identification will go to the manager anyway and he will be able to activate you. Activation allows you to send requests to security. But for security reasons, the status of all users is updated automatically at the beginning of the month, and you may need to contact your manager again.
-  description:
+  description: Сообщение, если адрес пользователя не найден в базе
+  title: "Квартира не найдена"
   vars:
   keyboard:
 
@@ -151,7 +159,8 @@
     en: |
       You have successfully submitted your credentials.
       Your details will be verified for your activation. You will be automatically activated if you have paid for security services in recent months.
-  description:
+  description: Сообщение об успешном прохождении идентификации
+  title: "Квартира найдена"
   vars:
   keyboard:
 
@@ -162,7 +171,8 @@
     uk: Поки що ви не зможете надсилати запити охороні, оскільки ви не платили за послуги впродовж останніх місяців.
     ru: Вы не можете отправлять заявки, поскольку не уплатили за последние месяцы.
     en: You will not be able to send security requests at this time because you have not paid for services in recent months.
-  description:
+  description: Сообщение, если адрес неактивирован (нет уплат)
+  title: "Квартира неактивна"
   vars:
   keyboard:
 
@@ -173,7 +183,8 @@
     uk: Сталася помилка при надсиланні даних. Повідомте вашій охороні про це, зазначивши час.
     ru: Произошла ошибка при отправке данных. Сообщите охране в случае, если это повторяется.
     en: There was an error sending the data. Tell your security about this, indicating the time.
-  description:
+  description: Ошибка при отсылании данных на сервер
+  title: Ошибка
   vars:
   keyboard:
 
@@ -185,6 +196,7 @@
     ru: Вас ещё не идентифицировали. Для дополнительной информации можете обратиться к диспетчеру или начните идентификацию по команде /identify
     en: You have not been identified yet. For more information, contact the manager or send the data again by sending the command /identify
   description:
+  title: Нидентифицирован
   vars:
   keyboard:
 
@@ -196,6 +208,7 @@
     ru: Вы не активированы. Возможно вы пропустили оплату за этот месяц.
     en: You have not been activated. You may have forgotten to pay for security services in recent months.
   description:
+  title: Неактивирован
   vars:
   keyboard:
 
@@ -207,6 +220,7 @@
     ru: Напишите пожалуйста цель вашей заявки.
     en: Please write the purpose of your application.
   description:
+  title: Начало заявки
   vars:
   keyboard:
 
@@ -227,9 +241,11 @@
       _{body}_
       signing your name {name} and address {address}?
   description:
+  title: Подтвердить заявку
   vars:
-    name:
-    address:
+    name: Имя пользователя
+    address: Адрес пользователя
+    body: Текст заявки
   keyboard:
     - - text:
           uk: Так
@@ -244,12 +260,13 @@
 
 'request:car-number:get':
   section: request
-  editable: yes
+  editable: no
   template:
     uk: Додати номер авто до заявки
     ru: Добавьте номер авто
     en: Add a car number to your request
   description:
+  title: Номер авто
   vars:
   keyboard:
     - - text:
@@ -260,7 +277,7 @@
 
 'request:car-number:invalid':
   section: request
-  editable: yes
+  editable: no
   template:
     uk: |
       Ви ввели невірний номер.
@@ -272,6 +289,7 @@
       You've put invalid carnumber.
       Please, retry
   description:
+  title:
   vars:
   keyboard:
     - - text:
@@ -297,11 +315,12 @@
       _{body}_
       signing your name {name}, address {address} and car number {carnumber}?
   description:
+  title: Подтверждение (с авто)
   vars:
-    body:
-    name:
-    address:
-    carnumber:
+    name: Имя пользователя
+    address: Адрес пользователя
+    body: Текст заявки
+    carnumber: Номер авто в заявке
   keyboard:
     - - text:
           uk: Так
@@ -331,10 +350,12 @@
       _{body}_
       signing your name {name}, address {address} without carnumber?"
   description:
+  title: Подтверждение (без авто)
   vars:
-    body:
-    name:
-    address:
+    name: Имя пользователя
+    address: Адрес пользователя
+    body: Текст заявки
+
   keyboard:
     - - text:
           uk: Так
@@ -355,8 +376,9 @@
     ru: "*Ваша заявка успешно принята на квартиру {address} была успешно отправлена.*"
     en: "*Your request to {address} has been successfully sent.*"
   description:
+  title: Конец заявки
   vars:
-    address:
+    address: Адрес пользователя
   keyboard:
 
 'request:denied':
@@ -367,6 +389,7 @@
     ru: Вы отменили вашу заявку
     en: You have declined your request
   description:
+  title: Отмена заявки
   vars:
   keyboard:
 
@@ -378,6 +401,7 @@
     ru: "*Вы прошли идентификацию и теперь можете отправлять заявки в случае если вы проплатили за охрану или диспетчер активировал ваш аккаунт*"
     en: "*Your identification request has been approved.*"
   description:
+  title: Идентификация
   vars:
   keyboard:
 
@@ -398,17 +422,19 @@
       You will not be able to submit requests.*
       If you have any questions, please contact the security.
   description:
+  title: Отказ
   vars:
   keyboard:
 
 'notify:user-activated':
-  section: request
+  section: notifications
   editable: yes
   template:
     uk: "*Ви були активовані для надсилання запитів вашій охороні.*"
     ru: "*Вы были активированы и теперь можете отправлять заявки*"
     en: "*You have been activated to send requests to your security.*"
   description:
+  title: Активация
   vars:
   keyboard:
     - - text:
@@ -418,7 +444,7 @@
         data: 'request-start'
 
 'notify:user-deactivated':
-  section: request
+  section: notifications
   editable: yes
   template:
     uk: |
@@ -431,11 +457,12 @@
       *You have been deactivated and will not be able to send requests.*
       For questions, contact the security.
   description:
+  title: Деактивация
   vars:
   keyboard:
 
 'notify:request-accepted':
-  section: request
+  section: notifications
   editable: yes
   template:
     uk: |
@@ -452,10 +479,11 @@
       {body}
       _{datetime}_
   description:
+  title: Заявка выполнена
   vars:
-    id:
-    datetime:
-    body:
+    id: Номер заявки
+    datetime: Дата заявки
+    body: Текст заявки
   keyboard:
     - - text:
           uk: Переглянути поточні запити
@@ -469,7 +497,7 @@
         data: 'request-start'
 
 'notify:request-updated':
-  section: request
+  section: notifications
   editable: yes
   template:
     uk: |
@@ -487,13 +515,15 @@
       {body}
       *has arrived*"
   description:
+  title: Въезд на территорию
   vars:
-    datetime:
-    body:
+    id: Номер заявки
+    datetime: Дата заявки
+    body: Текст заявки
   keyboard:
 
 'notify:request-denied':
-  section: request
+  section: notifications
   editable: yes
   template:
     uk: |
@@ -512,26 +542,28 @@
       {body}
       *has been declined*
   description:
+  title: Заявка отклонена
   vars:
-    id:
-    datetime:
-    body:
+    id: Номер заявки
+    datetime: Дата заявки
+    body: Текст заявки
   keyboard:
 
 'notify:error':
-  section: request
+  section: notifications
   editable: yes
   template:
     uk: Сталася помилка. Повідомте вашій охороні про це, зазначивши час.
     ru: Упс, произошла ошибка, сообщите вашему диспетчеру или попробуйте снова
     en: An error occurred. Tell your security about this, indicating the time.
   description:
+  title: Ошибка
   vars:
   keyboard:
 
 'notify:request-unaccepted':
-  section: request
-  editable: yes
+  section: notifications
+  editable: no
   template:
     uk: |
       Ваша виконана заявка №{id}.
@@ -549,9 +581,11 @@
       {body}
       *has just been marked as unfulfilled, it may be executed in a while.
   description:
+  title: Заявка возвращена
   vars:
-    datetime:
-    body:
+    id: Номер заявки
+    datetime: Дата заявки
+    body: Текст заявки
   keyboard:
     - - text:
           uk: Переглянути поточні запити
@@ -565,8 +599,8 @@
         data: 'request-start'
 
 'notify:request-undenied':
-  section: request
-  editable: yes
+  section: notifications
+  editable: no
   template:
     uk: |
       Ваш запит, який було відхилено №{id}
@@ -584,6 +618,7 @@
       {body}
       *has just been marked as not yet executed, may still be executed via for a while.*
   description:
+  title:
   vars:
     datetime:
     body:
@@ -607,6 +642,7 @@
     ru: 
     en:
   description:
+  title:
   vars:
   keyboard:
     - - text:
@@ -639,6 +675,7 @@
       List of requests still in progress:
       {requests}
   description:
+  title:
   vars:
     requests:
   keyboard:
@@ -651,17 +688,19 @@
     ru: "На данный момент у вас нету заявок, которые выполняются"
     en: "Currently you don't have active requests."
   description:
+  title:
   vars:
   keyboard:
 
 'profile:no-user':
   section: profile
-  editable: yes
+  editable: no
   template:
     uk: Наразі, у нас немає вашого профілю. Надішліть нам свої дані для ідентифікації /identify
     ru: Для начала вам нужно идентифицировать себя
     en: We don't have your profile yet. Send us your details to identify /identify
   description:
+  title: Неидентифицирован
   vars:
   keyboard:
 
@@ -700,12 +739,13 @@
       You've paid for security in recent months.
       You can send requests. "
   description:
+  title: Активирован
   vars:
-    firstname:
-    lastname:
-    username:
-    phone:
-    address:
+    firstname: Имя
+    lastname: Фамилия
+    username: Юзернейм
+    phone: Телефон
+    address: Адрес
   keyboard:
     - - text:
           uk: Змінити мову
@@ -744,13 +784,13 @@
       Address: *{address}*
       You've been identified.
       You cannot send requests, because you have not paid for security services in recent months.
-  description:
+  title: Неактивирован
   vars:
-    firstname:
-    lastname:
-    username:
-    phone:
-    address:
+    firstname: Имя
+    lastname: Фамилия
+    username: Юзернейм
+    phone: Телефон
+    address: Адрес
   keyboard:
     - - text:
           uk: Змінити мову
@@ -787,12 +827,13 @@
       Address: *{address}*
       Your identification request has not yet been approved.
   description:
+  title: Неидентифицирован
   vars:
-    firstname:
-    lastname:
-    username:
-    phone:
-    address:
+    firstname: Имя
+    lastname: Фамилия
+    username: Юзернейм
+    phone: Телефон
+    address: Адрес
   keyboard:
     - - text:
           uk: Змінити мову
@@ -808,6 +849,7 @@
     ru: "Вы проплатили за охрану"
     en: "Everything is paid for."
   description:
+  title: Оплаты (ок)
   vars:
   keyboard:
 
@@ -828,8 +870,9 @@
       {months}
       You can get details or pay in the telegram with the /pay command"
   description:
+  title: Неоплаченные месяцы
   vars:
-    months:
+    months: Список месяцов
   keyboard:
 
 'profile:payments:requisites':
@@ -855,6 +898,7 @@
       п/р `UA863052990000026005016804997`
       ПАТ КБ «Приватбанк»"
   description:
+  title: Реквизиты
   vars:
   keyboard:
 
@@ -866,6 +910,7 @@
     ru: "Выберите ваш язык:"
     en: "Choose your language:"
   description:
+  title: Выбор языка
   vars:
   keyboard:
     - - text: 
@@ -892,5 +937,6 @@
     ru: Вы изменили язык на русский
     en: You have changed your language to English
   description:
+  title:
   vars:
   keyboard:
