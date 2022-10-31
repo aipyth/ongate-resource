@@ -73,7 +73,7 @@
           uk: Надіслати запит
           ru: Отправить заявку
           en: Submit request
-        data: identification-start
+        data: request-start
 
 'identification:start':
   section: identification
@@ -180,9 +180,9 @@
   section: identification
   editable: yes
   template:
-    uk: Сталася помилка при надсиланні даних. Повідомте вашій охороні про це, зазначивши час.
-    ru: Произошла ошибка при отправке данных. Сообщите охране в случае, если это повторяется.
-    en: There was an error sending the data. Tell your security about this, indicating the time.
+    uk: Сталася помилка при надсиланні даних. Ми працюємо над вирішенням даної проблеми.
+    ru: Произошла ошибка при отправке данных. Мы работаем над решением этой ошибки.
+    en: There was an error sending the data. We're fixing this up.
   description: Ошибка при отсылании данных на сервер
   title: Ошибка
   vars:
@@ -224,6 +224,43 @@
   vars:
   keyboard:
 
+'request:confirm-vin':
+  section: request
+  editable: yes
+  template:
+    uk: |
+      Ви справді бажаєте надіслати запит 
+      _{body}_
+      На адресу {address}?
+    ru: |
+      Вы действительно желаете отправить заявку
+      _{body}_
+      На адрес {address}?"
+    en: |
+      Are you sure you want to send the request
+      _{body}_
+      and address {address}?
+  description:
+  vars:
+    body:
+    address:
+  keyboard:
+    - - text:
+          uk: Так
+          ru: Да
+          en: Yes
+        data: 'yes'
+      - text:
+          uk: Ні
+          ru: Нет
+          en: No
+        data: 'no'
+    - - text:
+          uk: Додати номер авто
+          ru: Добавить номер авто
+          en: Add a car number
+        data: 'carnumber-add'
+
 'request:confirm':
   section: request
   editable: yes
@@ -231,15 +268,15 @@
     uk: |
       Ви справді бажаєте надіслати запит 
       _{body}_
-      На ваше ім'я {name} та адрес {address}?
+      На адресу {address}?
     ru: |
       Вы действительно желаете отправить заявку
       _{body}_
-      На имя {name} адрес {address}?"
+      На адрес {address}?"
     en: |
-      Are you sure you want to send the request:
+      Are you sure you want to send the request
       _{body}_
-      signing your name {name} and address {address}?
+      and address {address}?
   description:
   title: Подтвердить заявку
   vars:
@@ -258,13 +295,35 @@
           en: No
         data: 'no'
 
+'request:irrelevant':
+  section: request
+  editable: yes
+  template:
+    uk: Цей запит більше не є актуальним.
+    ru: Этот запрос больше не актуальный.
+    en: This request is now irrelevant.
+  description:
+  vars:
+  keyboard:
+    - - text:
+          uk: Так
+          ru: Да
+          en: Yes
+        data: 'yes'
+      - text:
+          uk: Ні
+          ru: Нет
+          en: No
+        data: 'no'
+
+
 'request:car-number:get':
   section: request
   editable: no
   template:
-    uk: Додати номер авто до заявки
-    ru: Добавьте номер авто
-    en: Add a car number to your request
+    uk: Напишіть номер авто
+    ru: Напишите номер авто
+    en: Write a car number to add
   description:
   title: Номер авто
   vars:
@@ -272,7 +331,7 @@
     - - text:
           uk: Без номеру
           ru: Без номера
-          en: Without number
+          en: Without a car number
         data: 'carnumber-cancel'
 
 'request:car-number:invalid':
@@ -295,7 +354,7 @@
     - - text:
           uk: Без номеру
           ru: Без номера
-          en: Without number
+          en: Without a car number
         data: 'carnumber-cancel'
 
 'request:car-number:confirm':
@@ -737,7 +796,7 @@
       Address: *{address}*
       You've been identified.
       You've paid for security in recent months.
-      You can send requests. "
+      You can send requests.
   description:
   title: Активирован
   vars:
@@ -881,22 +940,10 @@
   template:
     uk: |
       *Реквізити для оплати*
-      ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
-      код ЄДРПОУ `43152352`
-      п/р `UA863052990000026005016804997`
-      ПАТ КБ «Приватбанк»"
     ru: |
       *Реквизиты для оплаты*
-      ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
-      код ЄДРПОУ `43152352`
-      п/р `UA863052990000026005016804997`
-      ПАТ КБ «Приватбанк»"
     en: |
       *Payment requisites*
-      ТОВ “КОМПЛЕКСНА БЕЗПЕКА СТОЛИЦI ТА ЖИТЛА”
-      код ЄДРПОУ `43152352`
-      п/р `UA863052990000026005016804997`
-      ПАТ КБ «Приватбанк»"
   description:
   title: Реквизиты
   vars:
