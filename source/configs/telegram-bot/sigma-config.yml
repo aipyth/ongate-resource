@@ -442,7 +442,7 @@
 
 'request:denied':
   section: request
-  editable: yes
+  editable: no
   template:
     uk: Ви відхилили ваш запит
     ru: Вы отменили вашу заявку
