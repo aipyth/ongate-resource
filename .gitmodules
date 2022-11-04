@@ -16,3 +16,6 @@
 [submodule "source/services/nigga"]
 	path = source/services/nigga
 	url = git@gitlab.com:m11259/nigga.git
+[submodule "source/aconfs"]
+	path = source/aconfs
+	url = git@gitlab.com:m11259/ACONFS.git

@@ -183,8 +183,8 @@
     uk: Сталася помилка при надсиланні даних. Ми працюємо над вирішенням даної проблеми.
     ru: Произошла ошибка при отправке данных. Мы работаем над решением этой ошибки.
     en: There was an error sending the data. We're fixing this up.
-  description: Ошибка при отсылании данных на сервер
-  title: Ошибка
+  description: Помилка при відправці данних на сервер
+  title: Помилка
   vars:
   keyboard:
 
@@ -195,8 +195,8 @@
     uk: Вас ще не ідентифіковано. Для додаткової інформації зверніться до диспетчера або надішліть дані знову, надіславши команду /identify
     ru: Вас ещё не идентифицировали. Для дополнительной информации можете обратиться к диспетчеру или начните идентификацию по команде /identify
     en: You have not been identified yet. For more information, contact the manager or send the data again by sending the command /identify
-  description:
-  title: Нидентифицирован
+  description: Спроба відправити запит для неідентифікованого користувача
+  title: Запит для неідентифікованого
   vars:
   keyboard:
 
@@ -207,8 +207,8 @@
     uk: Вас не було активовано. Можливо, ви забули проплатити послуги охорони за останні місяці.
     ru: Вы не активированы. Возможно вы пропустили оплату за этот месяц.
     en: You have not been activated. You may have forgotten to pay for security services in recent months.
-  description:
-  title: Неактивирован
+  description: Спроба відправити запит для неактивованого користувача
+  title: Запит для неактивованого
   vars:
   keyboard:
 
@@ -219,8 +219,8 @@
     uk: Напишіть, будь ласка, ціль вашої заявки.
     ru: Напишите пожалуйста цель вашей заявки.
     en: Please write the purpose of your application.
-  description:
-  title: Начало заявки
+  description: Текст для запиту текста заявки для користувача
+  title: Текст заявки?
   vars:
   keyboard:
 
@@ -240,7 +240,8 @@
       Are you sure you want to send the request
       _{body}_
       and address {address}?
-  description:
+  description: Підтвердження надсилання заявки для ЖК з можливістю додати номер авто
+  title: Підтвердження заявки (авто)
   vars:
     body:
     address:
@@ -277,8 +278,8 @@
       Are you sure you want to send the request
       _{body}_
       and address {address}?
-  description:
-  title: Подтвердить заявку
+  description: Підтвердження надсилання заявки для ЖК без підтримки номеру автомобіля
+  title: Підтвердження заявки
   vars:
     name: Имя пользователя
     address: Адрес пользователя
@@ -302,7 +303,8 @@
     uk: Цей запит більше не є актуальним.
     ru: Этот запрос больше не актуальный.
     en: This request is now irrelevant.
-  description:
+  description: Відповідь на спробу дій над заявкою, що не є більше актуальною
+  title: Неактуальна заявка
   vars:
   keyboard:
     - - text:
@@ -324,8 +326,8 @@
     uk: Напишіть номер авто
     ru: Напишите номер авто
     en: Write a car number to add
-  description:
-  title: Номер авто
+  description: Запит на додання номер автомобіля
+  title: Запит на додання номер автомобіля
   vars:
   keyboard:
     - - text:
@@ -347,8 +349,8 @@
     en: |
       You've put invalid carnumber.
       Please, retry
-  description:
-  title:
+  description: При спробі додання номера автомобіля, що не відповідає українському шаблону
+  title: Неправильний номер авто
   vars:
   keyboard:
     - - text:
@@ -361,20 +363,17 @@
   section: request
   editable: yes
   template:
-    uk: |
-      Ви справді бажаєте надіслати запит: 
+    uk: "Ви справді бажаєте надіслати запит: 
       _{body}_
-      На ваше ім`я {name}, адресу {address} з номером авто {carnumber}?
-    ru: |
-      Вы действительно желаете отправить заявку: 
+      На ваше ім`я {name}, адресу {address} з номером авто {carnumber}?"
+    ru: "Вы действительно желаете отправить заявку: 
       _{body}_
-      На имя {name}, адрес {address} и номер авто {carnumber}?
-    en: |
-      Are you sure you want to send the request:
+      На имя {name}, адрес {address} и номер авто {carnumber}?"
+    en: "Are you sure you want to send the request:
       _{body}_
-      signing your name {name}, address {address} and car number {carnumber}?
-  description:
-  title: Подтверждение (с авто)
+      signing your name {name}, address {address} and car number {carnumber}?"
+  description: Підтвердження заявки з прикріпленним номером автомобіля
+  title: Підтвердження (з авто)
   vars:
     name: Имя пользователя
     address: Адрес пользователя
@@ -396,20 +395,17 @@
   section: request
   editable: yes
   template:
-    uk: |
-      Ви справді бажаєте надіслати запит:
+    uk: "Ви справді бажаєте надіслати запит:
       _{body}_
-      На ваше ім'я {name}, адресу {address}? Bи не додали номер авто.
-    ru: |
-      Вы действительно желаете отправить заявку: 
+      На ваше ім'я {name}, адресу {address}? Bи не додали номер авто."
+    ru: "Вы действительно желаете отправить заявку: 
       _{body}_
-      На имя {name}, адрес {address} без номера автомобиля?
-    en: |
-      Are you sure you want to send the request: 
+      На имя {name}, адрес {address} без номера автомобиля?"
+    en: "Are you sure you want to send the request: 
       _{body}_
       signing your name {name}, address {address} without carnumber?"
-  description:
-  title: Подтверждение (без авто)
+  description: Підтвердження заявки, для якої користувач відмовився додати номер автомобіля
+  title: Підтвердження (без авто)
   vars:
     name: Имя пользователя
     address: Адрес пользователя
@@ -434,8 +430,8 @@
     uk: "*Ваш запит по адресі {address} був успішно надісланий.*"
     ru: "*Ваша заявка успешно принята на квартиру {address} была успешно отправлена.*"
     en: "*Your request to {address} has been successfully sent.*"
-  description:
-  title: Конец заявки
+  description: Заявка надіслана
+  title: Заявка надіслана
   vars:
     address: Адрес пользователя
   keyboard:
@@ -447,8 +443,8 @@
     uk: Ви відхилили ваш запит
     ru: Вы отменили вашу заявку
     en: You have declined your request
-  description:
-  title: Отмена заявки
+  description: Надсилання заявки було відхилено
+  title: Відміна заявки
   vars:
   keyboard:
 
@@ -459,8 +455,8 @@
     uk: "*Ваш запит на ідентифікацію буде схвалено.*"
     ru: "*Вы прошли идентификацию и теперь можете отправлять заявки в случае если вы проплатили за охрану или диспетчер активировал ваш аккаунт*"
     en: "*Your identification request has been approved.*"
-  description:
-  title: Идентификация
+  description: Повідомлення про схвалення запиту на ідентифікацію
+  title: Ідентифікація
   vars:
   keyboard:
 
@@ -480,8 +476,8 @@
       *Sorry, we denied your identification.
       You will not be able to submit requests.*
       If you have any questions, please contact the security.
-  description:
-  title: Отказ
+  description: Повідомлення про відхилення запиту на ідентифікацію
+  title: Відмова в ідентифікації
   vars:
   keyboard:
 
@@ -492,8 +488,8 @@
     uk: "*Ви були активовані для надсилання запитів вашій охороні.*"
     ru: "*Вы были активированы и теперь можете отправлять заявки*"
     en: "*You have been activated to send requests to your security.*"
-  description:
-  title: Активация
+  description: Повідомлення про активації аккаунта користувача
+  title: Активація
   vars:
   keyboard:
     - - text:
@@ -515,8 +511,8 @@
     en: |
       *You have been deactivated and will not be able to send requests.*
       For questions, contact the security.
-  description:
-  title: Деактивация
+  description: Повідомлення про деактивацію аккаунта користувача
+  title: Деактивація
   vars:
   keyboard:
 
@@ -537,8 +533,8 @@
       We have successfully *completed* your request №{id} 
       {body}
       _{datetime}_
-  description:
-  title: Заявка выполнена
+  description: Повідомлення користувача про виконання його запиту
+  title: Заявка виконана
   vars:
     id: Номер заявки
     datetime: Дата заявки
@@ -573,8 +569,8 @@
       _{datetime}_
       {body}
       *has arrived*"
-  description:
-  title: Въезд на территорию
+  description: Повідомлення користувача про в'їзд на територію машини, номер якої був прикріплений до заявки
+  title: В'їзд на територію
   vars:
     id: Номер заявки
     datetime: Дата заявки
@@ -600,8 +596,8 @@
       _{datetime}_
       {body}
       *has been declined*
-  description:
-  title: Заявка отклонена
+  description: Повідомлення для користувача про відхилення його заявки
+  title: Відхилення заявки
   vars:
     id: Номер заявки
     datetime: Дата заявки
@@ -615,8 +611,8 @@
     uk: Сталася помилка. Повідомте вашій охороні про це, зазначивши час.
     ru: Упс, произошла ошибка, сообщите вашему диспетчеру или попробуйте снова
     en: An error occurred. Tell your security about this, indicating the time.
-  description:
-  title: Ошибка
+  description: Повідомлення про помилку при спробі надсилання повідомлення про статус користувача або його заявки
+  title: Помилка
   vars:
   keyboard:
 
@@ -639,8 +635,8 @@
       _{datetime}_
       {body}
       *has just been marked as unfulfilled, it may be executed in a while.
-  description:
-  title: Заявка возвращена
+  description: Повідомлення користувача про повернення заявки зі стану виконаних до активних
+  title: Заявка повернена
   vars:
     id: Номер заявки
     datetime: Дата заявки
@@ -676,8 +672,8 @@
       _{datetime}_
       {body}
       *has just been marked as not yet executed, may still be executed via for a while.*
-  description:
-  title:
+  description: Повідомлення користувача про зміну стану заявки із відхилених до активних
+  title: Заявка повернена з відхилених
   vars:
     datetime:
     body:
@@ -733,8 +729,8 @@
     en: |
       List of requests still in progress:
       {requests}
-  description:
-  title:
+  description: Список поточних активних заявок
+  title: Поточні заявки
   vars:
     requests:
   keyboard:
@@ -746,8 +742,8 @@
     uk: "Наразі у вас немає активних запитів."
     ru: "На данный момент у вас нету заявок, которые выполняются"
     en: "Currently you don't have active requests."
-  description:
-  title:
+  description: Повідомлення про відсутність поточних заявок
+  title: Поточних заявок немає
   vars:
   keyboard:
 
@@ -758,8 +754,8 @@
     uk: Наразі, у нас немає вашого профілю. Надішліть нам свої дані для ідентифікації /identify
     ru: Для начала вам нужно идентифицировать себя
     en: We don't have your profile yet. Send us your details to identify /identify
-  description:
-  title: Неидентифицирован
+  description: Повідомлення про відсутність користувача у базі даних (відсутність запиту на ідентифікацію)
+  title: Профіль відсутній
   vars:
   keyboard:
 
@@ -797,14 +793,14 @@
       You've been identified.
       You've paid for security in recent months.
       You can send requests.
-  description:
-  title: Активирован
+  description: Профіль користувача, що був активований
+  title: Профіль активованого
   vars:
-    firstname: Имя
-    lastname: Фамилия
-    username: Юзернейм
-    phone: Телефон
-    address: Адрес
+    firstname: Ім'я
+    lastname: Прізвище
+    username: username в телеграмі
+    phone: Номер телефон
+    address: Адреса
   keyboard:
     - - text:
           uk: Змінити мову
@@ -843,13 +839,14 @@
       Address: *{address}*
       You've been identified.
       You cannot send requests, because you have not paid for security services in recent months.
-  title: Неактивирован
+  description: Профіль користувача, що був ідентифікований, але не активований
+  title: Профіль ідентифікованого
   vars:
-    firstname: Имя
-    lastname: Фамилия
-    username: Юзернейм
-    phone: Телефон
-    address: Адрес
+    firstname: Ім'я
+    lastname: Прізвище
+    username: username в телеграмі
+    phone: Номер телефон
+    address: Адреса
   keyboard:
     - - text:
           uk: Змінити мову
@@ -885,14 +882,14 @@
       Phone: *{phone}*
       Address: *{address}*
       Your identification request has not yet been approved.
-  description:
-  title: Неидентифицирован
+  description: Профіль користувача, що не був ще ідентифікований
+  title: Неідентифікований
   vars:
-    firstname: Имя
-    lastname: Фамилия
-    username: Юзернейм
-    phone: Телефон
-    address: Адрес
+    firstname: Ім'я
+    lastname: Прізвище
+    username: username в телеграмі
+    phone: Номер телефон
+    address: Адреса
   keyboard:
     - - text:
           uk: Змінити мову
@@ -907,8 +904,8 @@
     uk: "Все сплачено."
     ru: "Вы проплатили за охрану"
     en: "Everything is paid for."
-  description:
-  title: Оплаты (ок)
+  description: Повідомлення про сплату за останні місяці (відсутність заборгованостей)
+  title: Баланс (ок)
   vars:
   keyboard:
 
@@ -928,8 +925,8 @@
       *You have not paid for security services for the following months:*
       {months}
       You can get details or pay in the telegram with the /pay command"
-  description:
-  title: Неоплаченные месяцы
+  description: Повідомлення з інформацією про несплачені місяці
+  title: Несплачені місяці
   vars:
     months: Список месяцов
   keyboard:
@@ -944,8 +941,8 @@
       *Реквизиты для оплаты*
     en: |
       *Payment requisites*
-  description:
-  title: Реквизиты
+  description: Реквізити для оплати
+  title: Реквізити
   vars:
   keyboard:
 
@@ -956,8 +953,8 @@
     uk: "Оберіть бажану мову:"
     ru: "Выберите ваш язык:"
     en: "Choose your language:"
-  description:
-  title: Выбор языка
+  description: Вибір мови у профілі користувача
+  title: Вибір мови
   vars:
   keyboard:
     - - text: 
@@ -983,7 +980,7 @@
     uk: Ви змінили мову на українську
     ru: Вы изменили язык на русский
     en: You have changed your language to English
-  description:
-  title:
+  description: Повідомлення про успішну зміну мови
+  title: Мову змінено
   vars:
   keyboard:
